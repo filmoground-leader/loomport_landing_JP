@@ -771,6 +771,10 @@
             line-height: 1.9;
         }
 
+        .quote-wrapper {
+            text-align: center;
+        }
+
         .quote-box {
             font-size: 13px;
             color: var(--text-gray);
@@ -781,9 +785,7 @@
             text-align: left;
             line-height: 1.8;
             border-radius: 0 8px 8px 0;
-            max-width: 100%;
-            margin: 0 auto;
-            white-space: nowrap;
+            display: inline-block;
         }
 
         .quote-box .highlight {
@@ -1115,14 +1117,14 @@
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .section-title,
             .cocreation-content h2,
             .infra-header h2,
             .early-content h2 {
-                font-size: 26px;
+                font-size: 24px;
             }
         }
 
@@ -1137,37 +1139,242 @@
 
             .hero,
             section {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding: 60px 20px;
             }
 
             .hero {
-                padding-top: 100px;
-                padding-bottom: 60px;
+                padding-top: 80px;
+                padding-bottom: 50px;
+            }
+
+            /* Hero mobile */
+            .hero h1 {
+                font-size: 26px;
+                line-height: 1.4;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            .badge {
+                font-size: 10px;
+                padding: 6px 14px;
+                margin-bottom: 24px;
+            }
+
+            .hero-cta {
+                padding: 14px 28px;
+                font-size: 13px;
+            }
+
+            /* Section labels */
+            .section-label {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            /* Value cards mobile */
+            .value-card {
+                padding: 24px;
+            }
+
+            .value-card h3 {
+                font-size: 16px;
+                margin-bottom: 18px;
+            }
+
+            .value-card li {
+                font-size: 12px;
+                margin-bottom: 12px;
+                line-height: 1.5;
+            }
+
+            .compact-line,
+            .compact-line span:last-child {
+                letter-spacing: normal;
+            }
+
+            /* Infrastructure mobile */
+            .infra-header h2 {
+                font-size: 22px;
+            }
+
+            .infra-features li {
+                font-size: 13px;
+            }
+
+            .feature-number {
+                width: 24px;
+                height: 24px;
+                font-size: 11px;
+            }
+
+            .map-container {
+                min-height: 280px;
+            }
+
+            .map-visual {
+                height: 280px;
+            }
+
+            .point-label {
+                font-size: 9px;
+            }
+
+            .korea-hub { left: 15%; top: 40%; }
+            .tokyo-node { right: 10%; top: 20%; }
+            .osaka-node { right: 15%; top: 55%; }
+            .fukuoka-node { left: 42%; bottom: 15%; }
+
+            /* Co-creation mobile */
+            .cocreation-content h2 {
+                font-size: 22px;
+                line-height: 1.5;
+            }
+
+            .cocreation-content > p {
+                font-size: 13px;
+            }
+
+            .quote-box {
+                white-space: normal;
+                font-size: 12px;
+                padding: 16px 20px;
+                line-height: 1.8;
+            }
+
+            /* Early Access mobile */
+            .early-content h2 {
+                font-size: 22px;
+            }
+
+            .early-content > p {
+                font-size: 13px;
             }
 
             .signup-form {
                 flex-direction: column;
+                padding: 8px;
+            }
+
+            .signup-form .input-wrapper {
+                padding: 0 12px;
+            }
+
+            .signup-form input {
+                padding: 12px 0;
+                font-size: 14px;
+            }
+
+            .signup-form button {
+                width: 100%;
+                padding: 14px 20px;
+                justify-content: center;
+            }
+
+            .form-note {
+                font-size: 10px;
             }
 
             .voucher-card {
                 flex-direction: column;
                 text-align: center;
+                padding: 20px;
+                gap: 16px;
             }
 
+            .voucher-icon {
+                margin: 0 auto;
+            }
+
+            .voucher-info h4 {
+                font-size: 14px;
+            }
+
+            .voucher-info p {
+                font-size: 10px;
+            }
+
+            .voucher-price-wrapper {
+                text-align: center;
+            }
+
+            .voucher-price {
+                font-size: 24px;
+            }
+
+            .success-message {
+                padding: 24px 20px;
+            }
+
+            .success-message h4 {
+                font-size: 14px;
+            }
+
+            .success-message p {
+                font-size: 12px;
+            }
+
+            /* LINE button mobile */
             .line-btn {
                 right: 16px;
                 bottom: 16px;
                 top: auto;
                 transform: none;
+                padding: 10px 14px;
+                font-size: 11px;
             }
 
             .line-btn:hover {
                 transform: scale(1.05);
             }
 
-            .map-container {
-                padding: 30px;
+            .line-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Footer mobile */
+            footer {
+                padding: 40px 20px 30px;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 30px;
+                font-size: 11px;
+            }
+
+            .footer-description {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .section-title,
+            .cocreation-content h2,
+            .infra-header h2,
+            .early-content h2 {
+                font-size: 20px;
+            }
+
+            .value-card li {
+                font-size: 11px;
+            }
+
+            .infra-features li {
+                font-size: 12px;
+            }
+
+            .quote-box {
+                font-size: 11px;
             }
         }
     </style>
@@ -1528,8 +1735,10 @@
             <h2>あなたが探すスタイルが、私たちの供給基準です</h2>
             <p>LOOMPORTは単なるオープンマーケットではありません。私たちは、パートナー企業と共に成長し、市場を創ります。</p>
             
-            <div class="quote-box">
-                "提案された特定のスタイル、カテゴリー、韓国ブランドを<span class="highlight">優先的に開拓</span>し、あなた専用のインフラを構築します。"
+            <div class="quote-wrapper">
+                <div class="quote-box">
+                    "提案された特定のスタイル、カテゴリー、韓国ブランドを<span class="highlight">優先的に開拓</span>し、あなた専用のインフラを構築します。"
+                </div>
             </div>
         </div>
     </section>
