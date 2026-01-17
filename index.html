@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOOMPORT | 韓国ヴィンテージ仕入れの新しいインフラ</title>
+    <title>LOOMPORT | 日本のリセラー・バイヤーのための新しい仕入れインフラ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +39,9 @@
             background: var(--bg-white);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-break: strict;
         }
 
         /* Header */
@@ -169,7 +172,7 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 680px;
+            max-width: 800px;
         }
 
         .badge {
@@ -182,8 +185,8 @@
             border-radius: 20px;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1.5px;
-            margin-bottom: 36px;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
         }
 
         .badge::before {
@@ -207,13 +210,25 @@
             }
         }
 
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
         .hero h1 {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
-            line-height: 1.35;
+            line-height: 1.45;
             margin-bottom: 24px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
             color: var(--text-dark);
+        }
+
+        .hero h1 .hero-main-title {
+            letter-spacing: -1px;
+            white-space: nowrap;
         }
 
         .hero h1 .highlight {
@@ -223,7 +238,7 @@
         .hero-description {
             font-size: 15px;
             color: var(--text-gray);
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             line-height: 1.9;
         }
 
@@ -237,11 +252,24 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
+            margin-bottom: 20px;
         }
 
         .hero-cta:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+        }
+
+        .hero-note {
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 0.3px;
+        }
+
+        /* Desktop only line break */
+        .br-desktop::after {
+            content: '\A';
+            white-space: pre;
         }
 
         /* LINE floating button */
@@ -252,26 +280,25 @@
             transform: translateY(-50%);
             background: var(--line-green);
             color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             box-shadow: 0 4px 20px rgba(6, 199, 85, 0.35);
             z-index: 100;
             transition: all 0.2s;
         }
 
         .line-btn:hover {
-            transform: translateY(-50%) scale(1.05);
+            transform: translateY(-50%) scale(1.1);
         }
 
         .line-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 26px;
+            height: 26px;
         }
 
         /* Sections */
@@ -675,10 +702,10 @@
             font-weight: 800;
         }
 
-        .korea-hub { left: 22%; top: 38%; }
-        .tokyo-node { right: 18%; top: 22%; }
-        .osaka-node { right: 26%; top: 58%; }
-        .fukuoka-node { left: 48%; bottom: 18%; }
+        .korea-hub { left: 30%; top: 42%; }
+        .tokyo-node { right: 15%; top: 22%; }
+        .osaka-node { right: 20%; top: 58%; }
+        .fukuoka-node { left: 52%; bottom: 12%; }
 
         /* Outflow animation (LOOMPORT to Japan) */
         .flow-line {
@@ -1033,6 +1060,35 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Benefit Card (updated voucher) */
+        .benefit-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 28px 32px;
+        }
+
+        .benefit-content {
+            width: 100%;
+        }
+
+        .benefit-card .voucher-badge {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .benefit-text {
+            font-size: 13px;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .benefit-note {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
         /* Footer */
         footer {
             background: #111827;
@@ -1142,6 +1198,11 @@
                 padding: 60px 20px;
             }
 
+            /* Prevent word breaks in important text */
+            h1, h2, h3, h4, .badge, .hero-cta, .btn-primary {
+                word-break: keep-all;
+            }
+
             .hero {
                 padding-top: 80px;
                 padding-bottom: 50px;
@@ -1149,8 +1210,18 @@
 
             /* Hero mobile */
             .hero h1 {
-                font-size: 26px;
-                line-height: 1.4;
+                font-size: 22px;
+                line-height: 1.5;
+            }
+
+            .hero h1 .hero-main-title {
+                white-space: normal;
+                letter-spacing: -0.5px;
+            }
+
+            .hero-subtitle {
+                font-size: 13px;
+                margin-bottom: 10px;
             }
 
             .hero-content p {
@@ -1158,15 +1229,32 @@
                 line-height: 1.7;
             }
 
-            .badge {
+            .hero-description {
+                font-size: 13px;
+                margin-bottom: 28px;
+            }
+
+            /* Hide desktop line breaks on mobile */
+            .br-desktop::after {
+                content: ' ';
+                white-space: normal;
+            }
+
+            .hero-note {
                 font-size: 10px;
-                padding: 6px 14px;
-                margin-bottom: 24px;
+            }
+
+            .badge {
+                font-size: 9px;
+                padding: 6px 12px;
+                margin-bottom: 20px;
+                letter-spacing: 0.5px;
             }
 
             .hero-cta {
                 padding: 14px 28px;
                 font-size: 13px;
+                margin-bottom: 16px;
             }
 
             /* Section labels */
@@ -1212,21 +1300,29 @@
             }
 
             .map-container {
-                min-height: 280px;
+                min-height: 300px;
+                margin: 0 -20px;
+                padding: 0 10px;
             }
 
             .map-visual {
-                height: 280px;
+                height: 300px;
             }
 
             .point-label {
-                font-size: 9px;
+                font-size: 8px;
+                white-space: nowrap;
             }
 
-            .korea-hub { left: 15%; top: 40%; }
-            .tokyo-node { right: 10%; top: 20%; }
-            .osaka-node { right: 15%; top: 55%; }
-            .fukuoka-node { left: 42%; bottom: 15%; }
+            .point-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .korea-hub { left: 22%; top: 42%; }
+            .tokyo-node { right: 5%; top: 15%; }
+            .osaka-node { right: 8%; top: 58%; }
+            .fukuoka-node { left: 45%; bottom: 5%; }
 
             /* Co-creation mobile */
             .cocreation-content h2 {
@@ -1323,8 +1419,8 @@
                 bottom: 16px;
                 top: auto;
                 transform: none;
-                padding: 10px 14px;
-                font-size: 11px;
+                width: 46px;
+                height: 46px;
             }
 
             .line-btn:hover {
@@ -1332,8 +1428,8 @@
             }
 
             .line-btn svg {
-                width: 18px;
-                height: 18px;
+                width: 24px;
+                height: 24px;
             }
 
             /* Footer mobile */
@@ -1355,7 +1451,30 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 22px;
+                font-size: 20px;
+                line-height: 1.5;
+            }
+
+            .hero h1 .hero-main-title {
+                white-space: normal;
+                letter-spacing: -0.3px;
+            }
+
+            .hero-subtitle {
+                font-size: 12px;
+            }
+
+            .hero-description {
+                font-size: 12px;
+            }
+
+            .hero-note {
+                font-size: 9px;
+            }
+
+            .badge {
+                font-size: 8px;
+                padding: 5px 10px;
             }
 
             .section-title,
@@ -1389,7 +1508,7 @@
                 <a href="#infra">インフラ</a>
                 <a href="#philosophy">フィロソフィー</a>
                 <a href="#contact">相談</a>
-                <a href="#early" class="btn-primary">パートナー申請</a>
+                <a href="#early" class="btn-primary">日本パートナー事前登録</a>
             </nav>
         </div>
     </header>
@@ -1399,7 +1518,6 @@
         <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
         </svg>
-        LINE相談
     </a>
 
     <!-- Hero Section -->
@@ -1457,10 +1575,12 @@
         </div>
         
         <div class="hero-content">
-            <span class="badge">2026年6月 サービス正式ローンチ</span>
-            <h1>韓国ヴィンテージ仕入れの<br><span class="highlight">新しいインフラ</span></h1>
-            <p class="hero-description">訪問なし、クリック一つで仕入れが完結。プレミアムなヴィンテージ供給<br>網を、最先端のビジネスモデルを誇るLOOMPORTと共に。</p>
-            <a href="#early" class="hero-cta">パートナー申請はこちら</a>
+            <span class="badge">2026年6月 正式ローンチ予定｜日本パートナー事前募集</span>
+            <p class="hero-subtitle">韓国ヴィンテージを仕入れたい</p>
+            <h1><span class="hero-main-title">日本のリセラー・小規模セラー・バイヤーのための</span><br><span class="highlight">新しい仕入れインフラ</span></h1>
+            <p class="hero-description">韓国現地への訪問なし。オンラインで少量から仕入れ、<span class="br-desktop"></span>日本基準で検品される仕組みを現在構築中です。</p>
+            <a href="#early" class="hero-cta">日本パートナー事前登録</a>
+            <p class="hero-note">※ サービスは準備段階です。初期参加者の声をもとに設計しています。</p>
         </div>
     </section>
 
@@ -1636,70 +1756,70 @@
                             
                             <!-- Korean regional supplier lines (flowing INTO LOOMPORT) -->
                             <!-- Supplier 1 - top left -->
-                            <path d="M145,95 Q180,130 220,160" 
+                            <path d="M180,95 Q230,140 290,175" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-1"/>
                             <!-- Supplier 2 - top -->
-                            <path d="M240,70 Q245,110 250,155" 
+                            <path d="M300,65 Q305,110 310,165" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-2"/>
                             <!-- Supplier 3 - top right -->
-                            <path d="M340,90 Q300,125 270,158" 
+                            <path d="M420,85 Q370,130 330,170" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-3"/>
                             <!-- Supplier 4 - bottom left -->
-                            <path d="M130,260 Q170,230 215,195" 
+                            <path d="M170,280 Q220,245 285,205" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-4"/>
                             <!-- Supplier 5 - bottom -->
-                            <path d="M220,290 Q235,250 248,200" 
+                            <path d="M290,310 Q305,260 315,210" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-5"/>
                             <!-- Supplier 6 - bottom right -->
-                            <path d="M330,250 Q295,220 268,190" 
+                            <path d="M420,270 Q375,235 335,200" 
                                   stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="inflow-line inflow-line-6"/>
                             
                             <!-- Korean regional supplier dots with pulse animation -->
-                            <circle cx="145" cy="95" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="145" cy="95" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
+                            <circle cx="180" cy="95" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="180" cy="95" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
                             
-                            <circle cx="240" cy="70" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="240" cy="70" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
+                            <circle cx="300" cy="65" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="300" cy="65" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
                             
-                            <circle cx="340" cy="90" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="340" cy="90" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
+                            <circle cx="420" cy="85" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="420" cy="85" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
                             
-                            <circle cx="130" cy="260" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="130" cy="260" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
+                            <circle cx="170" cy="280" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="170" cy="280" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
                             
-                            <circle cx="220" cy="290" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="220" cy="290" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
+                            <circle cx="290" cy="310" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="290" cy="310" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
                             
-                            <circle cx="330" cy="250" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="330" cy="250" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
+                            <circle cx="420" cy="270" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
+                            <circle cx="420" cy="270" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
                             
                             <!-- Animated dashed connection lines (OUTFLOW to Japan) -->
                             <!-- LOOMPORT to Tokyo -->
-                            <path d="M270,168 Q500,60 790,105" 
+                            <path d="M340,175 Q550,80 820,100" 
                                   stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
                                   fill="none" opacity="0.5" stroke-linecap="round"
                                   class="flow-line flow-line-1"/>
                             
                             <!-- LOOMPORT to Osaka -->
-                            <path d="M270,172 Q520,220 680,268" 
+                            <path d="M340,185 Q560,230 740,260" 
                                   stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
                                   fill="none" opacity="0.4" stroke-linecap="round"
                                   class="flow-line flow-line-2"/>
                             
                             <!-- LOOMPORT to Fukuoka -->
-                            <path d="M270,178 Q370,295 490,348" 
+                            <path d="M340,195 Q430,300 530,355" 
                                   stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
                                   fill="none" opacity="0.4" stroke-linecap="round"
                                   class="flow-line flow-line-3"/>
@@ -1758,7 +1878,7 @@
                     </svg>
                     <input type="email" id="email-input" placeholder="メールアドレスを入力" required>
                 </div>
-                <button type="submit">今すぐパートナー申請 →</button>
+                <button type="submit">日本パートナー事前登録 →</button>
             </form>
             
             <!-- Success Message (hidden by default) -->
@@ -1785,23 +1905,11 @@
                 <span>登録後、詳細資料と特典のご案内を即座に送付いたします。</span>
             </div>
             
-            <div class="voucher-card">
-                <div class="voucher-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
-                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                    </svg>
-                </div>
-                <div class="voucher-info">
-                    <span class="voucher-badge">SPECIAL BENEFIT</span>
-                    <h4>国際配送料支援バウチャー</h4>
-                    <p>正式ローンチ時に利用可能な5,000円相当の物流優待<br>初回発注時のコスト負担を大幅に軽減します。</p>
-                </div>
-                <div class="voucher-price-wrapper">
-                    <div class="voucher-price-label">VALUE</div>
-                    <div class="voucher-price">¥5,000</div>
+            <div class="voucher-card benefit-card">
+                <div class="benefit-content">
+                    <span class="voucher-badge">初期パートナー特典について</span>
+                    <p class="benefit-text">LOOMPORTでは、サービス正式ローンチ後、事前登録いただいた日本パートナーの皆様に向けて初回取引時のコスト負担を軽減する特典を予定しています。</p>
+                    <p class="benefit-note">※ 特典内容は、サービス設計とともに決定予定です。</p>
                 </div>
             </div>
         </div>
