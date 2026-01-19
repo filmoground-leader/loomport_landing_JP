@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOOMPORT | 日本のリセラー・バイヤーのための新しい仕入れインフラ</title>
+    <title>LOOMPORT | Korean Vintage Sourcing Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -41,7 +41,14 @@
             -webkit-font-smoothing: antialiased;
             word-break: keep-all;
             overflow-wrap: break-word;
+        }
+
+        body.lang-ja {
             line-break: strict;
+        }
+
+        body.lang-en {
+            word-break: normal;
         }
 
         /* Header */
@@ -51,7 +58,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -61,7 +68,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px;
-            height: 64px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,15 +82,53 @@
             letter-spacing: -0.5px;
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            background: transparent;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-gray);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-dark);
+        }
+
         nav {
             display: flex;
             align-items: center;
-            gap: 36px;
+            gap: 8px;
         }
 
         nav a {
             font-size: 13px;
-            font-weight: 500;
             color: var(--text-gray);
             text-decoration: none;
             transition: color 0.2s;
@@ -96,14 +141,13 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-size: 13px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
-            border: none;
-            cursor: pointer;
+            white-space: nowrap;
         }
 
         .btn-primary:hover {
@@ -123,15 +167,14 @@
             overflow: hidden;
         }
 
-        /* Abstract background decoration */
         .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+            right: 0;
+            bottom: 0;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .hero-bg svg {
@@ -139,35 +182,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 1200px;
-            height: 1200px;
-            opacity: 1;
+            width: 120%;
+            height: 120%;
+            opacity: 0.7;
         }
-
-        /* Decorative circles */
-        .hero-circles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            max-width: 900px;
-            pointer-events: none;
-        }
-
-        .circle {
-            position: absolute;
-            border: 1px solid rgba(37, 99, 235, 0.12);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .circle-1 { width: 380px; height: 380px; }
-        .circle-2 { width: 520px; height: 520px; }
-        .circle-3 { width: 660px; height: 660px; }
 
         .hero-content {
             position: relative;
@@ -181,12 +199,12 @@
             gap: 8px;
             background: rgba(37, 99, 235, 0.06);
             color: var(--primary);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
         }
 
         .badge::before {
@@ -196,39 +214,25 @@
             background: var(--primary);
             border-radius: 50%;
             animation: badgePulse 2s ease-in-out infinite;
-            box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
         }
 
         @keyframes badgePulse {
-            0%, 100% {
-                opacity: 1;
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
-            }
-            50% {
-                opacity: 0.6;
-                box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
-            }
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
         }
 
         .hero-subtitle {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-gray);
             margin-bottom: 12px;
-            letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
-            line-height: 1.45;
-            margin-bottom: 24px;
-            letter-spacing: -0.3px;
+            line-height: 1.4;
+            margin-bottom: 20px;
             color: var(--text-dark);
-        }
-
-        .hero h1 .hero-main-title {
-            letter-spacing: -1px;
-            white-space: nowrap;
         }
 
         .hero h1 .highlight {
@@ -236,23 +240,23 @@
         }
 
         .hero-description {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-gray);
-            margin-bottom: 36px;
-            line-height: 1.9;
+            margin-bottom: 32px;
+            line-height: 1.8;
         }
 
         .hero-cta {
             display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 16px 36px;
+            padding: 16px 32px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .hero-cta:hover {
@@ -261,21 +265,14 @@
         }
 
         .hero-note {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-light);
-            letter-spacing: 0.3px;
         }
 
-        /* Desktop only line break */
-        .br-desktop::after {
-            content: '\A';
-            white-space: pre;
-        }
-
-        /* LINE floating button */
+        /* LINE Button */
         .line-btn {
             position: fixed;
-            right: 24px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             background: var(--line-green);
@@ -303,95 +300,71 @@
 
         /* Sections */
         section {
-            padding: 85px 40px;
+            padding: 80px 40px;
         }
 
         .section-label {
             font-size: 10px;
             font-weight: 600;
-            letter-spacing: 2.5px;
             color: var(--primary);
-            text-transform: uppercase;
+            letter-spacing: 2.5px;
             margin-bottom: 14px;
+            text-align: center;
         }
 
         .section-title {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: -0.3px;
-            margin-bottom: 42px;
+            text-align: center;
+            margin-bottom: 40px;
             color: var(--text-dark);
         }
 
         /* Value Proposition */
         .value-section {
             background: var(--bg-white);
-            text-align: center;
         }
 
         .value-cards {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 24px;
             align-items: center;
-        }
-
-        .cards-arrow {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .cards-arrow svg {
-            width: 18px;
-            height: 18px;
-            color: var(--primary);
         }
 
         .value-card {
-            background: var(--bg-white);
+            background: white;
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 36px;
-            text-align: left;
-        }
-
-        .value-card.solution {
-            border-color: var(--primary);
-            border-width: 1.5px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.02) 0%, rgba(37, 99, 235, 0.04) 100%);
+            border-radius: 12px;
+            padding: 28px;
         }
 
         .card-label {
-            display: inline-block;
             font-size: 9px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: var(--text-light);
-            text-transform: uppercase;
-            margin-bottom: 14px;
-            background: #f1f5f9;
-            padding: 4px 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            padding: 5px 10px;
             border-radius: 4px;
+            display: inline-block;
         }
 
-        .value-card.solution .card-label {
-            color: var(--primary);
+        .value-card:first-child .card-label {
+            background: #f3f4f6;
+            color: var(--text-gray);
+        }
+
+        .value-card:last-child .card-label {
             background: rgba(37, 99, 235, 0.08);
+            color: var(--primary);
         }
 
         .value-card h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             color: var(--text-dark);
         }
 
@@ -402,79 +375,55 @@
         .value-card li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
             font-size: 13px;
-            color: var(--text-gray);
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-
-        .value-card li:last-child {
-            margin-bottom: 0;
+            color: var(--text-medium);
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .bullet-icon {
-            width: 20px;
-            height: 20px;
             flex-shrink: 0;
-            margin-top: 1px;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
         }
 
         .bullet-icon svg {
-            width: 20px;
-            height: 20px;
-            color: #cbd5e1;
+            width: 100%;
+            height: 100%;
         }
 
-        .check-bullet {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 1px;
+        .value-card:first-child .bullet-icon {
+            color: #9ca3af;
         }
 
-        .check-bullet svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .value-card.solution li {
-            color: var(--text-medium);
-        }
-
-        .value-card.solution li .highlight {
+        .value-card:last-child .bullet-icon {
             color: var(--primary);
-            font-weight: 700;
         }
 
-        .compact-line {
-            letter-spacing: -0.3px;
+        .value-card:last-child li strong {
+            color: var(--primary);
+            font-weight: 600;
         }
 
-        .compact-line span:last-child {
-            letter-spacing: -0.5px;
+        .cards-arrow {
+            color: var(--primary);
+            opacity: 0.4;
         }
 
-        .bullet {
-            width: 6px;
-            height: 6px;
-            background: var(--text-light);
-            border-radius: 50%;
-            margin-top: 7px;
-            flex-shrink: 0;
-        }
-
-        .value-card.solution .bullet {
-            background: var(--primary);
+        .cards-arrow svg {
+            width: 32px;
+            height: 32px;
         }
 
         /* Infrastructure */
         .infra-section {
             background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
-            padding: 70px 40px 85px;
+            padding: 70px 40px 80px;
         }
 
-        .infra-content {
+        .infra-container {
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -483,14 +432,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 60px;
+            gap: 50px;
             margin-bottom: 40px;
         }
 
         .infra-header h2 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            line-height: 1.4;
             color: var(--text-dark);
         }
 
@@ -498,244 +446,103 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 12px;
         }
 
         .infra-features li {
             display: flex;
             align-items: center;
-            gap: 16px;
-            font-size: 15px;
+            gap: 12px;
+            font-size: 13px;
             color: var(--text-medium);
         }
 
         .feature-number {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border: 1px solid var(--border);
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            color: var(--text-gray);
+            color: var(--primary);
             background: white;
             flex-shrink: 0;
         }
 
-        .check-icon {
-            width: 20px;
-            height: 20px;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        /* Map */
+        /* Map Container */
         .map-container {
             position: relative;
-            min-height: 360px;
-            overflow: visible;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .map-visual {
             position: relative;
             width: 100%;
-            height: 360px;
         }
 
-        /* Brush strokes - Eastern aesthetic */
         .brush-strokes {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
+            height: auto;
         }
 
         .brush-strokes svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 100%;
-            height: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* Map nodes */
-        .map-point {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .point-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-            animation: dotPulse 2s ease-in-out infinite;
-        }
-
-        .point-dot::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            border-radius: 50%;
-            animation: dotRipple 2s ease-out infinite;
-        }
-
-        @keyframes dotPulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(0.95);
-            }
-        }
-
-        @keyframes dotRipple {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.4;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(2.5);
-                opacity: 0;
-            }
-        }
-
-        .point-hub .point-dot {
-            width: 16px;
-            height: 16px;
-            background: #1e293b;
-            box-shadow: 0 0 0 6px rgba(30, 41, 59, 0.15);
-            animation: hubPulse 2s ease-in-out infinite;
-        }
-
-        .point-hub .point-dot::after {
-            background: #1e293b;
-        }
-
-        @keyframes hubPulse {
-            0%, 100% {
-                opacity: 1;
-                box-shadow: 0 0 0 6px rgba(30, 41, 59, 0.15), 0 0 20px rgba(37, 99, 235, 0.2);
-            }
-            50% {
-                opacity: 0.9;
-                box-shadow: 0 0 0 10px rgba(30, 41, 59, 0.05), 0 0 30px rgba(37, 99, 235, 0.3);
-            }
-        }
-
-        /* Tokyo node delay */
-        .tokyo-node .point-dot {
-            animation-delay: 0.3s;
-        }
-        .tokyo-node .point-dot::after {
-            animation-delay: 0.3s;
-        }
-
-        /* Osaka node delay */
-        .osaka-node .point-dot {
-            animation-delay: 0.6s;
-        }
-        .osaka-node .point-dot::after {
-            animation-delay: 0.6s;
-        }
-
-        /* Fukuoka node delay */
-        .fukuoka-node .point-dot {
-            animation-delay: 0.9s;
-        }
-        .fukuoka-node .point-dot::after {
-            animation-delay: 0.9s;
-        }
-
-        /* SVG supplier dots pulse animation */
-        .supplier-pulse {
-            animation: supplierPulse 2s ease-out infinite;
+        /* SVG Node Animations */
+        .hub-pulse {
+            animation: hubPulse 2s ease-out infinite;
             transform-origin: center;
         }
 
-        .supplier-pulse-1 { animation-delay: 0s; }
-        .supplier-pulse-2 { animation-delay: 0.3s; }
-        .supplier-pulse-3 { animation-delay: 0.6s; }
-        .supplier-pulse-4 { animation-delay: 0.15s; }
-        .supplier-pulse-5 { animation-delay: 0.45s; }
-        .supplier-pulse-6 { animation-delay: 0.75s; }
-
-        @keyframes supplierPulse {
-            0% {
-                r: 4;
-                opacity: 0.4;
-            }
-            100% {
-                r: 12;
-                opacity: 0;
-            }
+        @keyframes hubPulse {
+            0% { r: 12; opacity: 0.3; }
+            100% { r: 28; opacity: 0; }
         }
 
-        .point-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-gray);
-            letter-spacing: 1px;
-            white-space: nowrap;
+        .japan-pulse {
+            animation: japanPulse 2s ease-out infinite;
         }
 
-        .point-hub .point-label {
-            color: var(--text-dark);
-            font-weight: 800;
+        .japan-pulse-1 { animation-delay: 0s; }
+        .japan-pulse-2 { animation-delay: 0.3s; }
+        .japan-pulse-3 { animation-delay: 0.6s; }
+
+        @keyframes japanPulse {
+            0% { r: 9; opacity: 0.3; }
+            100% { r: 22; opacity: 0; }
         }
 
-        .korea-hub { left: 30%; top: 42%; }
-        .tokyo-node { right: 15%; top: 22%; }
-        .osaka-node { right: 20%; top: 58%; }
-        .fukuoka-node { left: 52%; bottom: 12%; }
+        .hub-dot, .japan-dot {
+            animation: dotGlow 2s ease-in-out infinite;
+        }
 
-        /* Outflow animation (LOOMPORT to Japan) */
+        @keyframes dotGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Flow Animation */
         .flow-line {
             animation: flowDash 3s linear infinite;
         }
 
-        .flow-line-1 {
-            animation-duration: 4s;
-        }
-
-        .flow-line-2 {
-            animation-duration: 3.5s;
-            animation-delay: 0.5s;
-        }
-
-        .flow-line-3 {
-            animation-duration: 3s;
-            animation-delay: 1s;
-        }
+        .flow-line-1 { animation-duration: 4s; }
+        .flow-line-2 { animation-duration: 3.5s; animation-delay: 0.5s; }
+        .flow-line-3 { animation-duration: 3s; animation-delay: 1s; }
 
         @keyframes flowDash {
-            0% {
-                stroke-dashoffset: 0;
-            }
-            100% {
-                stroke-dashoffset: -24;
-            }
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -24; }
         }
 
-        /* Inflow animation (Korean regions to LOOMPORT) */
         .inflow-line {
             animation: inflowDash 2.5s linear infinite;
         }
@@ -748,12 +555,26 @@
         .inflow-line-6 { animation-delay: 1s; }
 
         @keyframes inflowDash {
-            0% {
-                stroke-dashoffset: 0;
-            }
-            100% {
-                stroke-dashoffset: -16;
-            }
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -16; }
+        }
+
+        /* Supplier Pulse */
+        .supplier-pulse {
+            animation: supplierPulse 2s ease-out infinite;
+        }
+
+        .supplier-pulse-1 { animation-delay: 0s; }
+        .supplier-pulse-2 { animation-delay: 0.25s; }
+        .supplier-pulse-3 { animation-delay: 0.5s; }
+        .supplier-pulse-4 { animation-delay: 0.15s; }
+        .supplier-pulse-5 { animation-delay: 0.4s; }
+        .supplier-pulse-6 { animation-delay: 0.75s; }
+
+        @keyframes supplierPulse {
+            0% { r: 4; opacity: 0.3; }
+            50% { r: 10; opacity: 0.1; }
+            100% { r: 4; opacity: 0.3; }
         }
 
         /* Co-creation */
@@ -762,7 +583,7 @@
         }
 
         .cocreation-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
@@ -772,7 +593,6 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 18px;
         }
 
         .cocreation-content .section-label::before,
@@ -784,18 +604,17 @@
         }
 
         .cocreation-content h2 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            line-height: 1.5;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             color: var(--text-dark);
         }
 
         .cocreation-content > p {
             font-size: 14px;
             color: var(--text-gray);
-            margin-bottom: 28px;
-            line-height: 1.9;
+            margin-bottom: 24px;
+            line-height: 1.8;
         }
 
         .quote-wrapper {
@@ -806,7 +625,7 @@
             font-size: 13px;
             color: var(--text-gray);
             font-style: italic;
-            padding: 20px 28px;
+            padding: 18px 24px;
             border-left: 3px solid var(--primary);
             background: rgba(37, 99, 235, 0.03);
             text-align: left;
@@ -822,68 +641,67 @@
 
         /* Early Access */
         .early-section {
-            background: linear-gradient(180deg, #f0f7ff 0%, #e8f4ff 50%, #f8fafc 100%);
-            text-align: center;
+            background: linear-gradient(180deg, #f0f7ff 0%, #e8f4ff 50%, #f0f7ff 100%);
         }
 
         .early-content {
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .early-content h2 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             color: var(--text-dark);
         }
 
         .early-content > p {
             font-size: 14px;
             color: var(--text-gray);
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .early-content > p .underline {
             color: var(--primary);
             text-decoration: underline;
-            text-underline-offset: 3px;
+            font-weight: 500;
         }
 
         .signup-form {
             display: flex;
-            gap: 0;
-            margin-bottom: 14px;
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 6px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(37, 99, 235, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
         }
 
         .signup-form .input-wrapper {
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 12px;
             padding: 0 16px;
+            gap: 10px;
         }
 
         .signup-form .input-wrapper svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             color: var(--text-light);
             flex-shrink: 0;
         }
 
         .signup-form input {
             flex: 1;
-            padding: 14px 0;
             border: none;
-            font-size: 14px;
-            font-family: inherit;
             outline: none;
+            padding: 14px 0;
+            font-size: 14px;
             background: transparent;
+            font-family: inherit;
         }
 
         .signup-form input::placeholder {
@@ -893,17 +711,15 @@
         .signup-form button {
             background: var(--primary);
             color: white;
+            border: none;
             padding: 14px 24px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
-            border: none;
             cursor: pointer;
+            transition: all 0.2s;
             white-space: nowrap;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-family: inherit;
         }
 
         .signup-form button:hover {
@@ -929,7 +745,7 @@
         .success-message {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 28px;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.03) 100%);
             border: 1px solid rgba(16, 185, 129, 0.2);
             border-radius: 12px;
@@ -942,146 +758,66 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .success-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: #10b981;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 14px;
+            margin: 0 auto 12px;
         }
 
         .success-icon svg {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             color: white;
         }
 
         .success-message h4 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: #065f46;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .success-message p {
-            font-size: 13px;
+            font-size: 12px;
             color: #047857;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* Voucher Card */
+        /* Benefit Card */
         .voucher-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 28px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-align: left;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-        }
-
-        .voucher-icon {
-            width: 52px;
-            height: 52px;
-            background: #ecfdf5;
+            background: white;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .voucher-icon svg {
-            width: 24px;
-            height: 24px;
-            color: #10b981;
-        }
-
-        .voucher-info {
-            flex: 1;
+            padding: 24px;
+            border: 1px solid var(--border);
+            text-align: center;
         }
 
         .voucher-badge {
             display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 12px;
             border-radius: 4px;
-            font-size: 9px;
-            font-weight: 700;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .voucher-info h4 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: var(--text-dark);
-        }
-
-        .voucher-info p {
-            font-size: 11px;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .voucher-price-wrapper {
-            text-align: right;
-        }
-
-        .voucher-price-label {
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--text-light);
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .voucher-price {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Benefit Card (updated voucher) */
-        .benefit-card {
-            flex-direction: column;
-            text-align: center;
-            padding: 28px 32px;
-        }
-
-        .benefit-content {
-            width: 100%;
-        }
-
-        .benefit-card .voucher-badge {
+            margin-bottom: 12px;
             background: rgba(37, 99, 235, 0.1);
             color: var(--primary);
-            margin-bottom: 14px;
         }
 
         .benefit-text {
             font-size: 13px;
             color: var(--text-medium);
             line-height: 1.8;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .benefit-note {
@@ -1091,46 +827,46 @@
 
         /* Footer */
         footer {
-            background: #111827;
+            background: #1e293b;
             color: white;
-            padding: 50px 40px 35px;
+            padding: 48px 40px 35px;
             text-align: center;
         }
 
         .footer-tagline {
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
             margin-bottom: 24px;
-            letter-spacing: 1px;
         }
 
         .footer-contact {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
-            margin-bottom: 42px;
+            gap: 16px;
             font-size: 12px;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 28px;
+            flex-wrap: wrap;
         }
 
         .footer-contact .line-icon {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             background: var(--line-green);
-            border-radius: 50%;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .footer-contact .line-icon svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
         }
 
         .footer-contact a {
-            color: var(--primary-light);
+            color: var(--line-green);
             text-decoration: none;
             font-weight: 500;
         }
@@ -1139,28 +875,27 @@
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
-
-        .footer-copyright {
-            font-size: 10px;
-            color: rgba(255,255,255,0.25);
-            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .footer-description {
             font-size: 11px;
             color: rgba(255,255,255,0.5);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             line-height: 1.6;
         }
 
-        /* Responsive */
+        .footer-copyright {
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
             .value-cards {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
 
             .cards-arrow {
@@ -1169,185 +904,154 @@
 
             .infra-header {
                 flex-direction: column;
-                gap: 30px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .section-title,
-            .cocreation-content h2,
-            .infra-header h2,
-            .early-content h2 {
-                font-size: 24px;
+                gap: 24px;
             }
         }
 
         @media (max-width: 768px) {
             .header-inner {
-                padding: 0 20px;
+                padding: 0 16px;
+                height: 56px;
+            }
+
+            .logo {
+                font-size: 16px;
             }
 
             nav {
                 display: none;
             }
 
-            .hero,
-            section {
-                padding: 60px 20px;
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 10px;
             }
 
-            /* Prevent word breaks in important text */
-            h1, h2, h3, h4, .badge, .hero-cta, .btn-primary {
-                word-break: keep-all;
+            .hero,
+            section {
+                padding: 50px 16px;
             }
 
             .hero {
-                padding-top: 80px;
-                padding-bottom: 50px;
+                padding-top: 70px;
+                min-height: auto;
             }
 
-            /* Hero mobile */
-            .hero h1 {
-                font-size: 22px;
-                line-height: 1.5;
-            }
-
-            .hero h1 .hero-main-title {
-                white-space: normal;
-                letter-spacing: -0.5px;
+            /* Hero Mobile */
+            .badge {
+                font-size: 9px;
+                padding: 6px 12px;
+                margin-bottom: 18px;
             }
 
             .hero-subtitle {
-                font-size: 13px;
-                margin-bottom: 10px;
+                font-size: 12px;
+                margin-bottom: 8px;
             }
 
-            .hero-content p {
-                font-size: 13px;
-                line-height: 1.7;
+            .hero h1 {
+                font-size: 22px;
+                line-height: 1.45;
+                margin-bottom: 16px;
             }
 
             .hero-description {
-                font-size: 13px;
-                margin-bottom: 28px;
+                font-size: 12px;
+                margin-bottom: 24px;
+                line-height: 1.75;
             }
 
-            /* Hide desktop line breaks on mobile */
-            .br-desktop::after {
-                content: ' ';
-                white-space: normal;
+            .hero-cta {
+                padding: 14px 28px;
+                font-size: 13px;
             }
 
             .hero-note {
                 font-size: 10px;
             }
 
-            .badge {
-                font-size: 9px;
-                padding: 6px 12px;
-                margin-bottom: 20px;
-                letter-spacing: 0.5px;
-            }
-
-            .hero-cta {
-                padding: 14px 28px;
-                font-size: 13px;
-                margin-bottom: 16px;
-            }
-
-            /* Section labels */
+            /* Section titles */
             .section-label {
                 font-size: 9px;
                 letter-spacing: 2px;
             }
 
-            /* Value cards mobile */
+            .section-title,
+            .cocreation-content h2,
+            .infra-header h2,
+            .early-content h2 {
+                font-size: 20px;
+            }
+
+            /* Value Cards */
             .value-card {
-                padding: 24px;
+                padding: 20px;
             }
 
             .value-card h3 {
-                font-size: 16px;
-                margin-bottom: 18px;
+                font-size: 14px;
+                margin-bottom: 14px;
             }
 
             .value-card li {
                 font-size: 12px;
-                margin-bottom: 12px;
-                line-height: 1.5;
+                margin-bottom: 10px;
             }
 
-            .compact-line,
-            .compact-line span:last-child {
-                letter-spacing: normal;
+            .bullet-icon {
+                width: 16px;
+                height: 16px;
             }
 
-            /* Infrastructure mobile */
+            /* Infrastructure Map - Full Width */
+            .infra-section {
+                padding: 50px 12px;
+            }
+
+            .infra-header {
+                padding: 0 8px;
+            }
+
             .infra-header h2 {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .infra-features li {
-                font-size: 13px;
-            }
-
-            .feature-number {
-                width: 24px;
-                height: 24px;
                 font-size: 11px;
             }
 
+            .feature-number {
+                width: 22px;
+                height: 22px;
+                font-size: 10px;
+            }
+
             .map-container {
-                min-height: 300px;
-                margin: 0 -20px;
-                padding: 0 10px;
+                margin: 0 -8px;
             }
 
-            .map-visual {
-                height: 300px;
-            }
-
-            .point-label {
-                font-size: 8px;
-                white-space: nowrap;
-            }
-
-            .point-dot {
-                width: 10px;
-                height: 10px;
-            }
-
-            .korea-hub { left: 22%; top: 42%; }
-            .tokyo-node { right: 5%; top: 15%; }
-            .osaka-node { right: 8%; top: 58%; }
-            .fukuoka-node { left: 45%; bottom: 5%; }
-
-            /* Co-creation mobile */
+            /* Co-creation */
             .cocreation-content h2 {
-                font-size: 22px;
-                line-height: 1.5;
+                font-size: 20px;
+                line-height: 1.45;
             }
 
             .cocreation-content > p {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .quote-box {
-                white-space: normal;
-                font-size: 12px;
-                padding: 16px 20px;
-                line-height: 1.8;
+                font-size: 11px;
+                padding: 14px 18px;
             }
 
-            /* Early Access mobile */
+            /* Early Access */
             .early-content h2 {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .early-content > p {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .signup-form {
@@ -1366,7 +1070,7 @@
 
             .signup-form button {
                 width: 100%;
-                padding: 14px 20px;
+                padding: 14px;
                 justify-content: center;
             }
 
@@ -1375,48 +1079,21 @@
             }
 
             .voucher-card {
-                flex-direction: column;
-                text-align: center;
                 padding: 20px;
-                gap: 16px;
             }
 
-            .voucher-icon {
-                margin: 0 auto;
-            }
-
-            .voucher-info h4 {
-                font-size: 14px;
-            }
-
-            .voucher-info p {
-                font-size: 10px;
-            }
-
-            .voucher-price-wrapper {
-                text-align: center;
-            }
-
-            .voucher-price {
-                font-size: 24px;
-            }
-
-            .success-message {
-                padding: 24px 20px;
-            }
-
-            .success-message h4 {
-                font-size: 14px;
-            }
-
-            .success-message p {
+            .benefit-text {
                 font-size: 12px;
             }
 
-            /* LINE button mobile */
+            .benefit-note {
+                font-size: 10px;
+            }
+
+            /* LINE Button */
             .line-btn {
-                right: 16px;
-                bottom: 16px;
+                right: 14px;
+                bottom: 14px;
                 top: auto;
                 transform: none;
                 width: 46px;
@@ -1432,15 +1109,18 @@
                 height: 24px;
             }
 
-            /* Footer mobile */
+            /* Footer */
             footer {
-                padding: 40px 20px 30px;
+                padding: 36px 16px 28px;
+            }
+
+            .footer-tagline {
+                font-size: 11px;
             }
 
             .footer-contact {
                 flex-direction: column;
                 gap: 10px;
-                margin-bottom: 30px;
                 font-size: 11px;
             }
 
@@ -1452,24 +1132,6 @@
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 20px;
-                line-height: 1.5;
-            }
-
-            .hero h1 .hero-main-title {
-                white-space: normal;
-                letter-spacing: -0.3px;
-            }
-
-            .hero-subtitle {
-                font-size: 12px;
-            }
-
-            .hero-description {
-                font-size: 12px;
-            }
-
-            .hero-note {
-                font-size: 9px;
             }
 
             .badge {
@@ -1481,35 +1143,25 @@
             .cocreation-content h2,
             .infra-header h2,
             .early-content h2 {
-                font-size: 20px;
-            }
-
-            .value-card li {
-                font-size: 11px;
-            }
-
-            .infra-features li {
-                font-size: 12px;
-            }
-
-            .quote-box {
-                font-size: 11px;
+                font-size: 18px;
             }
         }
     </style>
 </head>
-<body>
+<body class="lang-ja">
     <!-- Header -->
     <header>
         <div class="header-inner">
             <div class="logo">LOOMPORT</div>
-            <nav>
-                <a href="#value">依頼案内</a>
-                <a href="#infra">インフラ</a>
-                <a href="#philosophy">フィロソフィー</a>
-                <a href="#contact">相談</a>
-                <a href="#early" class="btn-primary">日本パートナー事前登録</a>
-            </nav>
+            <div class="header-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="ja">JP</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <nav>
+                    <a href="#early" class="btn-primary" data-i18n="nav.cta">日本パートナー事前登録</a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -1522,10 +1174,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Abstract SVG Background -->
         <div class="hero-bg">
             <svg viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Gradient definitions -->
                 <defs>
                     <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
@@ -1540,123 +1190,83 @@
                         <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
                     </radialGradient>
                 </defs>
-                
-                <!-- Large curved lines -->
                 <path d="M-100 600 Q 300 200, 600 400 T 1300 300" stroke="url(#lineGrad1)" stroke-width="1.5" fill="none"/>
                 <path d="M-50 700 Q 350 350, 650 500 T 1250 400" stroke="url(#lineGrad2)" stroke-width="1" fill="none"/>
                 <path d="M0 800 Q 400 500, 700 600 T 1200 500" stroke="url(#lineGrad1)" stroke-width="0.8" fill="none"/>
-                
-                <!-- Upper curves -->
                 <path d="M200 100 Q 500 300, 800 150 T 1100 250" stroke="url(#lineGrad2)" stroke-width="1" fill="none"/>
-                <path d="M100 200 Q 400 400, 700 250 T 1000 350" stroke="url(#lineGrad1)" stroke-width="0.8" fill="none"/>
-                
-                <!-- Lower curves -->
-                <path d="M-100 900 Q 300 700, 600 850 T 1300 750" stroke="url(#lineGrad2)" stroke-width="1" fill="none"/>
-                <path d="M0 1000 Q 400 800, 700 950 T 1200 850" stroke="url(#lineGrad1)" stroke-width="0.8" fill="none"/>
-                
-                <!-- Decorative circles -->
                 <circle cx="200" cy="300" r="80" fill="url(#circleGrad)"/>
                 <circle cx="950" cy="250" r="60" fill="url(#circleGrad)"/>
                 <circle cx="1000" cy="800" r="100" fill="url(#circleGrad)"/>
-                <circle cx="150" cy="850" r="70" fill="url(#circleGrad)"/>
-                
-                <!-- Small accent circles -->
-                <circle cx="400" cy="200" r="4" fill="#3b82f6" fill-opacity="0.3"/>
-                <circle cx="850" cy="400" r="3" fill="#3b82f6" fill-opacity="0.25"/>
-                <circle cx="300" cy="700" r="5" fill="#3b82f6" fill-opacity="0.2"/>
-                <circle cx="900" cy="650" r="4" fill="#3b82f6" fill-opacity="0.3"/>
-                <circle cx="500" cy="900" r="3" fill="#3b82f6" fill-opacity="0.25"/>
-                
-                <!-- Concentric circles in center -->
                 <circle cx="600" cy="600" r="180" stroke="#3b82f6" stroke-opacity="0.1" stroke-width="1" fill="none"/>
                 <circle cx="600" cy="600" r="260" stroke="#3b82f6" stroke-opacity="0.08" stroke-width="1" fill="none"/>
-                <circle cx="600" cy="600" r="340" stroke="#3b82f6" stroke-opacity="0.06" stroke-width="1" fill="none"/>
             </svg>
         </div>
         
         <div class="hero-content">
-            <span class="badge">2026年6月 正式ローンチ予定｜日本パートナー事前募集</span>
-            <p class="hero-subtitle">韓国ヴィンテージを仕入れたい</p>
-            <h1><span class="hero-main-title">日本のリセラー・小規模セラー・バイヤーのための</span><br><span class="highlight">新しい仕入れインフラ</span></h1>
-            <p class="hero-description">韓国現地への訪問なし。オンラインで少量から仕入れ、<span class="br-desktop"></span>日本基準で検品される仕組みを現在構築中です。</p>
-            <a href="#early" class="hero-cta">日本パートナー事前登録</a>
-            <p class="hero-note">※ サービスは準備段階です。初期参加者の声をもとに設計しています。</p>
+            <span class="badge" data-i18n="hero.badge">2026年6月 正式ローンチ予定｜日本パートナー事前募集</span>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">韓国ヴィンテージを仕入れたい</p>
+            <h1 data-i18n="hero.title">日本のリセラー・小規模セラー・バイヤーのための<br><span class="highlight" data-i18n="hero.titleHighlight">新しい仕入れインフラ</span></h1>
+            <p class="hero-description" data-i18n="hero.description">韓国現地への訪問なし。オンラインで少量から仕入れ、日本基準で検品される仕組みを現在構築中です。</p>
+            <a href="#early" class="hero-cta" data-i18n="hero.cta">日本パートナー事前登録</a>
+            <p class="hero-note" data-i18n="hero.note">※ サービスは準備段階です。初期参加者の声をもとに設計しています。</p>
         </div>
     </section>
 
     <!-- Value Proposition -->
     <section class="value-section" id="value">
         <div class="section-label">VALUE PROPOSITION</div>
-        <h2 class="section-title">解決される課題と提供価値</h2>
+        <h2 class="section-title" data-i18n="value.title">解決される課題と提供価値</h2>
         
         <div class="value-cards">
             <div class="value-card">
-                <div class="card-label">OLD WAY</div>
-                <h3>これまでの課題</h3>
+                <div class="card-label" data-i18n="value.oldWay">OLD WAY</div>
+                <h3 data-i18n="value.oldTitle">これまでの課題</h3>
                 <ul>
-                    <li><span class="bullet-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                    </span><span>毎回発生する膨大な航空運賃及び滞在費</span></li>
-                    <li><span class="bullet-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                    </span><span>現場で決定しなければならない性急な購買構造</span></li>
-                    <li><span class="bullet-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                    </span><span>特定の地域と人脈に限定された閉鎖的な情報</span></li>
-                    <li><span class="bullet-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                    </span><span>在庫負担の大きい大量単位のオーダー方式</span></li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></span>
+                        <span data-i18n="value.old1">韓国現地への出張・買い付け負担</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></span>
+                        <span data-i18n="value.old2">品質の不確実性とリスク</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></span>
+                        <span data-i18n="value.old3">限定されたスタイル・カテゴリー</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></span>
+                        <span data-i18n="value.old4">最低注文量・物流手配の難しさ</span>
+                    </li>
                 </ul>
             </div>
-            
-            <!-- Arrow between cards -->
+
             <div class="cards-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </div>
-            
-            <div class="value-card solution">
+
+            <div class="value-card">
                 <div class="card-label">LOOMPORT WAY</div>
-                <h3>LOOMPORTの解決策</h3>
+                <h3 data-i18n="value.newTitle">LOOMPORTの解決策</h3>
                 <ul>
-                    <li class="compact-line"><span class="check-bullet">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <circle cx="12" cy="12" r="10" fill="#2563eb"/>
-                            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><span>韓国訪問なしで、いつでも<strong class="highlight">オンライン・ワンクリック仕入れ</strong></span></li>
-                    <li><span class="check-bullet">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <circle cx="12" cy="12" r="10" fill="#2563eb"/>
-                            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><span>日本市場の基準を充足する<strong class="highlight">徹底した品質検品</strong></span></li>
-                    <li><span class="check-bullet">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <circle cx="12" cy="12" r="10" fill="#2563eb"/>
-                            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><span>全国的ネットワークを通じた<strong class="highlight">多様な商品群の確保</strong></span></li>
-                    <li><span class="check-bullet">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <circle cx="12" cy="12" r="10" fill="#2563eb"/>
-                            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><span>小ロット発注が可能な<strong class="highlight">柔軟なオーダーシステム</strong></span></li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                        <span><strong data-i18n="value.new1Bold">オンライン・ワンクリック仕入れ</strong><span data-i18n="value.new1">で時間・コスト削減</span></span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                        <span><strong data-i18n="value.new2Bold">徹底した品質検品</strong><span data-i18n="value.new2">で安心取引</span></span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                        <span><strong data-i18n="value.new3Bold">多様な商品群の確保</strong><span data-i18n="value.new3">でビジネス拡大</span></span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                        <span><strong data-i18n="value.new4Bold">柔軟なオーダーシステム</strong><span data-i18n="value.new4">で少量から可能</span></span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1664,35 +1274,24 @@
 
     <!-- Infrastructure -->
     <section class="infra-section" id="infra">
-        <div class="infra-content">
+        <div class="infra-container">
             <div class="infra-header">
                 <div>
                     <div class="section-label">INFRASTRUCTURE</div>
-                    <h2>国境を越える、次世代の供給網</h2>
+                    <h2 data-i18n="infra.title">国境を越える、次世代の供給網</h2>
                 </div>
                 <ul class="infra-features">
-                    <li>
-                        <span class="feature-number">1</span>
-                        <span>厳格な基準を通過したパートナー供給社</span>
-                    </li>
-                    <li>
-                        <span class="feature-number">2</span>
-                        <span>複数セラー商品の統合・適時配送システム</span>
-                    </li>
-                    <li>
-                        <span class="feature-number">3</span>
-                        <span>柔軟で安定的なオーダープロセス</span>
-                    </li>
+                    <li><span class="feature-number">1</span><span data-i18n="infra.feature1">厳格な基準を通過したパートナー供給社</span></li>
+                    <li><span class="feature-number">2</span><span data-i18n="infra.feature2">複数セラー商品の統合・適時配送システム</span></li>
+                    <li><span class="feature-number">3</span><span data-i18n="infra.feature3">柔軟で安定的なオーダープロセス</span></li>
                 </ul>
             </div>
             
             <div class="map-container">
                 <div class="map-visual">
-                    <!-- Brush strokes with Eastern aesthetic -->
                     <div class="brush-strokes">
                         <svg viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" fill="none">
                             <defs>
-                                <!-- Soft ink wash gradients -->
                                 <radialGradient id="inkWash1" cx="50%" cy="50%" r="50%" fx="30%" fy="50%">
                                     <stop offset="0%" stop-color="#c7deff" stop-opacity="0.6"/>
                                     <stop offset="40%" stop-color="#dbeafe" stop-opacity="0.4"/>
@@ -1704,13 +1303,6 @@
                                     <stop offset="50%" stop-color="#dbeafe" stop-opacity="0.25"/>
                                     <stop offset="100%" stop-color="#eff6ff" stop-opacity="0"/>
                                 </radialGradient>
-                                <radialGradient id="inkWash3" cx="50%" cy="50%" r="50%" fx="35%" fy="50%">
-                                    <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.35"/>
-                                    <stop offset="60%" stop-color="#bfdbfe" stop-opacity="0.15"/>
-                                    <stop offset="100%" stop-color="#dbeafe" stop-opacity="0"/>
-                                </radialGradient>
-                                
-                                <!-- Blur filters for soft edges -->
                                 <filter id="softInk" x="-50%" y="-50%" width="200%" height="200%">
                                     <feGaussianBlur in="SourceGraphic" stdDeviation="12"/>
                                 </filter>
@@ -1719,129 +1311,71 @@
                                 </filter>
                             </defs>
                             
-                            <!-- Main brush wash - organic flowing shape -->
-                            <path d="M120,200 
-                                     C180,160 240,140 320,150
-                                     C420,165 480,145 560,135
-                                     C660,122 740,115 820,125
-                                     C880,132 920,145 950,140
-                                     L950,180
-                                     C900,190 840,185 780,175
-                                     C700,162 620,170 540,185
-                                     C440,205 360,210 280,200
-                                     C200,190 150,210 120,200Z" 
-                                  fill="url(#inkWash1)" filter="url(#softInk2)"/>
+                            <!-- Brush strokes -->
+                            <path d="M150,200 C220,160 300,140 380,150 C480,165 560,145 640,135 C740,122 820,115 900,125 L900,180 C840,190 760,185 680,175 C600,162 520,170 440,185 C340,205 260,210 180,200Z" fill="url(#inkWash1)" filter="url(#softInk2)"/>
+                            <path d="M180,220 C250,200 350,185 450,195 C550,205 640,190 740,175 C820,163 900,160 950,170 L950,220 C870,235 790,240 710,230 C610,218 530,235 430,245 C330,255 250,250 180,220Z" fill="url(#inkWash2)" filter="url(#softInk)"/>
                             
-                            <!-- Second brush layer - overlapping -->
-                            <path d="M160,220 
-                                     C220,200 300,185 400,195
-                                     C500,205 580,190 680,175
-                                     C760,163 840,160 900,170
-                                     L900,220
-                                     C820,235 740,240 660,230
-                                     C560,218 480,235 380,245
-                                     C280,255 200,250 160,220Z" 
-                                  fill="url(#inkWash2)" filter="url(#softInk)"/>
+                            <!-- Supplier lines to Hub (280, 190) -->
+                            <path d="M160,80 Q210,130 268,178" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-1"/>
+                            <path d="M280,55 Q280,115 280,175" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-2"/>
+                            <path d="M400,75 Q345,125 292,178" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-3"/>
+                            <path d="M150,300 Q205,250 268,202" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-4"/>
+                            <path d="M280,330 Q280,265 280,205" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-5"/>
+                            <path d="M400,310 Q345,255 292,202" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-6"/>
                             
-                            <!-- Third brush accent - lower flow -->
-                            <path d="M200,260 
-                                     C280,245 380,250 480,275
-                                     C560,295 640,290 720,265
-                                     C780,248 830,250 870,260
-                                     L870,295
-                                     C810,310 750,315 680,305
-                                     C600,292 520,310 440,320
-                                     C340,332 260,315 200,290Z" 
-                                  fill="url(#inkWash3)" filter="url(#softInk)"/>
+                            <!-- Supplier dots -->
+                            <circle cx="160" cy="80" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="160" cy="80" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
+                            <circle cx="280" cy="55" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="280" cy="55" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
+                            <circle cx="400" cy="75" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="400" cy="75" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
+                            <circle cx="150" cy="300" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="150" cy="300" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
+                            <circle cx="280" cy="330" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="280" cy="330" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
+                            <circle cx="400" cy="310" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="400" cy="310" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
                             
-                            <!-- Korean regional supplier lines (flowing INTO LOOMPORT) -->
-                            <!-- Supplier 1 - top left -->
-                            <path d="M180,95 Q230,140 290,175" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-1"/>
-                            <!-- Supplier 2 - top -->
-                            <path d="M300,65 Q305,110 310,165" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-2"/>
-                            <!-- Supplier 3 - top right -->
-                            <path d="M420,85 Q370,130 330,170" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-3"/>
-                            <!-- Supplier 4 - bottom left -->
-                            <path d="M170,280 Q220,245 285,205" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-4"/>
-                            <!-- Supplier 5 - bottom -->
-                            <path d="M290,310 Q305,260 315,210" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-5"/>
-                            <!-- Supplier 6 - bottom right -->
-                            <path d="M420,270 Q375,235 335,200" 
-                                  stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,6" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="inflow-line inflow-line-6"/>
+                            <!-- Hub to Japan lines (start from 280, 190) -->
+                            <path d="M295,190 Q560,70 850,92" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.55" stroke-linecap="round" class="flow-line flow-line-1"/>
+                            <path d="M295,190 Q580,235 780,255" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-2"/>
+                            <path d="M295,190 Q440,320 560,365" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-3"/>
                             
-                            <!-- Korean regional supplier dots with pulse animation -->
-                            <circle cx="180" cy="95" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="180" cy="95" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
+                            <!-- ===== MAP NODES (inside SVG for fixed positioning) ===== -->
                             
-                            <circle cx="300" cy="65" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="300" cy="65" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
+                            <!-- LOOMPORT [KOREA] Hub -->
+                            <g class="node-hub">
+                                <circle cx="280" cy="190" r="12" fill="#111827" class="hub-dot"/>
+                                <circle cx="280" cy="190" r="12" fill="#111827" opacity="0.3" class="hub-pulse"/>
+                                <circle cx="280" cy="190" r="20" fill="none" stroke="#111827" stroke-opacity="0.12" stroke-width="6"/>
+                                <text x="280" y="225" text-anchor="middle" font-size="11" font-weight="800" fill="#111827" font-family="Inter, sans-serif">LOOMPORT [KOREA]</text>
+                            </g>
                             
-                            <circle cx="420" cy="85" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="420" cy="85" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
+                            <!-- TOKYO -->
+                            <g class="node-japan">
+                                <circle cx="850" cy="92" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="850" cy="92" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-1"/>
+                                <circle cx="850" cy="92" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="850" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">TOKYO</text>
+                            </g>
                             
-                            <circle cx="170" cy="280" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="170" cy="280" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
+                            <!-- OSAKA -->
+                            <g class="node-japan">
+                                <circle cx="780" cy="255" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="780" cy="255" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-2"/>
+                                <circle cx="780" cy="255" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="780" y="285" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">OSAKA</text>
+                            </g>
                             
-                            <circle cx="290" cy="310" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="290" cy="310" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
-                            
-                            <circle cx="420" cy="270" r="4" fill="#94a3b8" opacity="0.6" class="supplier-dot"/>
-                            <circle cx="420" cy="270" r="4" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
-                            
-                            <!-- Animated dashed connection lines (OUTFLOW to Japan) -->
-                            <!-- LOOMPORT to Tokyo -->
-                            <path d="M340,175 Q550,80 820,100" 
-                                  stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
-                                  fill="none" opacity="0.5" stroke-linecap="round"
-                                  class="flow-line flow-line-1"/>
-                            
-                            <!-- LOOMPORT to Osaka -->
-                            <path d="M340,185 Q560,230 740,260" 
-                                  stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
-                                  fill="none" opacity="0.4" stroke-linecap="round"
-                                  class="flow-line flow-line-2"/>
-                            
-                            <!-- LOOMPORT to Fukuoka -->
-                            <path d="M340,195 Q430,300 530,355" 
-                                  stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,9" 
-                                  fill="none" opacity="0.4" stroke-linecap="round"
-                                  class="flow-line flow-line-3"/>
+                            <!-- FUKUOKA -->
+                            <g class="node-japan">
+                                <circle cx="560" cy="365" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="560" cy="365" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-3"/>
+                                <circle cx="560" cy="365" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="560" y="395" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">FUKUOKA</text>
+                            </g>
                         </svg>
-                    </div>
-                    
-                    <!-- Map nodes -->
-                    <div class="map-point point-hub korea-hub">
-                        <div class="point-dot"></div>
-                        <span class="point-label">LOOMPORT [KOREA]</span>
-                    </div>
-                    <div class="map-point tokyo-node">
-                        <div class="point-dot"></div>
-                        <span class="point-label">TOKYO</span>
-                    </div>
-                    <div class="map-point osaka-node">
-                        <div class="point-dot"></div>
-                        <span class="point-label">OSAKA</span>
-                    </div>
-                    <div class="map-point fukuoka-node">
-                        <div class="point-dot"></div>
-                        <span class="point-label">FUKUOKA</span>
                     </div>
                 </div>
             </div>
@@ -1852,12 +1386,12 @@
     <section class="cocreation-section" id="philosophy">
         <div class="cocreation-content">
             <div class="section-label">CO-CREATION</div>
-            <h2>あなたが探すスタイルが、私たちの供給基準です</h2>
-            <p>LOOMPORTは単なるオープンマーケットではありません。私たちは、パートナー企業と共に成長し、市場を創ります。</p>
+            <h2 data-i18n="cocreation.title">あなたが探すスタイルが、私たちの供給基準です</h2>
+            <p data-i18n="cocreation.description">LOOMPORTは単なるオープンマーケットではありません。私たちは、パートナー企業と共に成長し、市場を創ります。</p>
             
             <div class="quote-wrapper">
                 <div class="quote-box">
-                    "提案された特定のスタイル、カテゴリー、韓国ブランドを<span class="highlight">優先的に開拓</span>し、あなた専用のインフラを構築します。"
+                    <span data-i18n="cocreation.quote">"提案された特定のスタイル、カテゴリー、韓国ブランドを</span><span class="highlight" data-i18n="cocreation.quoteHighlight">優先的に開拓</span><span data-i18n="cocreation.quoteEnd">し、あなた専用のインフラを構築します。"</span>
                 </div>
             </div>
         </div>
@@ -1867,8 +1401,8 @@
     <section class="early-section" id="early">
         <div class="early-content">
             <div class="section-label">EARLY PARTNER ACCESS</div>
-            <h2>誰よりも早く、始めてください</h2>
-            <p>LOOMPORTのファウンディング・パートナーとして、<span class="underline">最優先で利用権</span>を。</p>
+            <h2 data-i18n="early.title">誰よりも早く、始めてください</h2>
+            <p><span data-i18n="early.description">LOOMPORTのファウンディング・パートナーとして、</span><span class="underline" data-i18n="early.descriptionHighlight">最優先で利用権</span><span data-i18n="early.descriptionEnd">を。</span></p>
             
             <form class="signup-form" id="partner-form">
                 <div class="input-wrapper">
@@ -1876,12 +1410,11 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
-                    <input type="email" id="email-input" placeholder="メールアドレスを入力" required>
+                    <input type="email" id="email-input" data-i18n-placeholder="early.placeholder" placeholder="メールアドレスを入力" required>
                 </div>
-                <button type="submit">日本パートナー事前登録 →</button>
+                <button type="submit" data-i18n="early.submit">日本パートナー事前登録 →</button>
             </form>
             
-            <!-- Success Message (hidden by default) -->
             <div class="success-message" id="success-message">
                 <div class="success-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1889,11 +1422,10 @@
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                     </svg>
                 </div>
-                <h4>ご登録いただき、誠にありがとうございます</h4>
-                <p>順次、メールにてご連絡させていただきます。</p>
+                <h4 data-i18n="early.successTitle">ご登録いただき、誠にありがとうございます</h4>
+                <p data-i18n="early.successMessage">順次、メールにてご連絡させていただきます。</p>
             </div>
             
-            <!-- Google Forms Hidden iFrame for submission -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             
             <div class="form-note">
@@ -1902,30 +1434,28 @@
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
-                <span>登録後、詳細資料と特典のご案内を即座に送付いたします。</span>
+                <span data-i18n="early.formNote">登録後、詳細資料と特典のご案内を即座に送付いたします。</span>
             </div>
             
-            <div class="voucher-card benefit-card">
-                <div class="benefit-content">
-                    <span class="voucher-badge">初期パートナー特典について</span>
-                    <p class="benefit-text">LOOMPORTでは、サービス正式ローンチ後、事前登録いただいた日本パートナーの皆様に向けて初回取引時のコスト負担を軽減する特典を予定しています。</p>
-                    <p class="benefit-note">※ 特典内容は、サービス設計とともに決定予定です。</p>
-                </div>
+            <div class="voucher-card">
+                <span class="voucher-badge" data-i18n="early.benefitTitle">初期パートナー特典について</span>
+                <p class="benefit-text" data-i18n="early.benefitText">LOOMPORTでは、サービス正式ローンチ後、事前登録いただいた日本パートナーの皆様に向けて初回取引時のコスト負担を軽減する特典を予定しています。</p>
+                <p class="benefit-note" data-i18n="early.benefitNote">※ 特典内容は、サービス設計とともに決定予定です。</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer id="contact">
-        <p class="footer-tagline">ソーシングは選択ではなく、基準であるべきです</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">ソーシングは選択ではなく、基準であるべきです</p>
         <div class="footer-contact">
             <div class="line-icon">
                 <svg viewBox="0 0 24 24" fill="white">
                     <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
                 </svg>
             </div>
-            <span>個別のお問い合わせはLINE公式アカウントへお気軽にご連絡ください</span>
-            <a href="https://lin.ee/nKKZnz1" target="_blank" rel="noopener noreferrer">友だち追加 ></a>
+            <span data-i18n="footer.contact">個別のお問い合わせはLINE公式アカウントへ</span>
+            <a href="https://lin.ee/nKKZnz1" target="_blank" rel="noopener noreferrer" data-i18n="footer.addFriend">友だち追加 ></a>
         </div>
         <div class="footer-logo">LOOMPORT</div>
         <p class="footer-description">LOOMPORT operates from Korea,<br>working closely with verified sellers nationwide.</p>
@@ -1933,7 +1463,153 @@
     </footer>
 
     <script>
-        // Google Forms submission handling
+        // Translation data
+        const translations = {
+            ja: {
+                'nav.cta': '日本パートナー事前登録',
+                'hero.badge': '2026年6月 正式ローンチ予定｜日本パートナー事前募集',
+                'hero.subtitle': '韓国ヴィンテージを仕入れたい',
+                'hero.title': '日本のリセラー・小規模セラー・バイヤーのための<br><span class="highlight">新しい仕入れインフラ</span>',
+                'hero.description': '韓国現地への訪問なし。オンラインで少量から仕入れ、日本基準で検品される仕組みを現在構築中です。',
+                'hero.cta': '日本パートナー事前登録',
+                'hero.note': '※ サービスは準備段階です。初期参加者の声をもとに設計しています。',
+                'value.title': '解決される課題と提供価値',
+                'value.oldWay': 'OLD WAY',
+                'value.oldTitle': 'これまでの課題',
+                'value.old1': '韓国現地への出張・買い付け負担',
+                'value.old2': '品質の不確実性とリスク',
+                'value.old3': '限定されたスタイル・カテゴリー',
+                'value.old4': '最低注文量・物流手配の難しさ',
+                'value.newTitle': 'LOOMPORTの解決策',
+                'value.new1Bold': 'オンライン・ワンクリック仕入れ',
+                'value.new1': 'で時間・コスト削減',
+                'value.new2Bold': '徹底した品質検品',
+                'value.new2': 'で安心取引',
+                'value.new3Bold': '多様な商品群の確保',
+                'value.new3': 'でビジネス拡大',
+                'value.new4Bold': '柔軟なオーダーシステム',
+                'value.new4': 'で少量から可能',
+                'infra.title': '国境を越える、次世代の供給網',
+                'infra.feature1': '厳格な基準を通過したパートナー供給社',
+                'infra.feature2': '複数セラー商品の統合・適時配送システム',
+                'infra.feature3': '柔軟で安定的なオーダープロセス',
+                'cocreation.title': 'あなたが探すスタイルが、私たちの供給基準です',
+                'cocreation.description': 'LOOMPORTは単なるオープンマーケットではありません。私たちは、パートナー企業と共に成長し、市場を創ります。',
+                'cocreation.quote': '"提案された特定のスタイル、カテゴリー、韓国ブランドを',
+                'cocreation.quoteHighlight': '優先的に開拓',
+                'cocreation.quoteEnd': 'し、あなた専用のインフラを構築します。"',
+                'early.title': '誰よりも早く、始めてください',
+                'early.description': 'LOOMPORTのファウンディング・パートナーとして、',
+                'early.descriptionHighlight': '最優先で利用権',
+                'early.descriptionEnd': 'を。',
+                'early.placeholder': 'メールアドレスを入力',
+                'early.submit': '日本パートナー事前登録 →',
+                'early.successTitle': 'ご登録いただき、誠にありがとうございます',
+                'early.successMessage': '順次、メールにてご連絡させていただきます。',
+                'early.formNote': '登録後、詳細資料と特典のご案内を即座に送付いたします。',
+                'early.benefitTitle': '初期パートナー特典について',
+                'early.benefitText': 'LOOMPORTでは、サービス正式ローンチ後、事前登録いただいた日本パートナーの皆様に向けて初回取引時のコスト負担を軽減する特典を予定しています。',
+                'early.benefitNote': '※ 特典内容は、サービス設計とともに決定予定です。',
+                'footer.tagline': 'ソーシングは選択ではなく、基準であるべきです',
+                'footer.contact': '個別のお問い合わせはLINE公式アカウントへ',
+                'footer.addFriend': '友だち追加 >'
+            },
+            en: {
+                'nav.cta': 'Early Partner Registration',
+                'hero.badge': 'June 2026 Official Launch | Japan Partner Pre-Registration',
+                'hero.subtitle': 'Want to source Korean vintage?',
+                'hero.title': 'A New Sourcing Infrastructure<br><span class="highlight">for Japanese Resellers, Small Sellers & Buyers</span>',
+                'hero.description': 'No trips to Korea needed. Source small quantities online with Japanese-standard quality inspection. Currently under development.',
+                'hero.cta': 'Early Partner Registration',
+                'hero.note': '※ Service is in preparation. Designed with input from early participants.',
+                'value.title': 'Problems Solved & Value Delivered',
+                'value.oldWay': 'OLD WAY',
+                'value.oldTitle': 'Current Challenges',
+                'value.old1': 'Travel & purchasing burden in Korea',
+                'value.old2': 'Quality uncertainty and risks',
+                'value.old3': 'Limited styles & categories',
+                'value.old4': 'MOQ & logistics difficulties',
+                'value.newTitle': 'The LOOMPORT Solution',
+                'value.new1Bold': 'One-click online sourcing',
+                'value.new1': ' saves time & cost',
+                'value.new2Bold': 'Thorough quality inspection',
+                'value.new2': ' for secure transactions',
+                'value.new3Bold': 'Diverse product range',
+                'value.new3': ' for business expansion',
+                'value.new4Bold': 'Flexible order system',
+                'value.new4': ' for small quantities',
+                'infra.title': 'Cross-Border, Next-Generation Supply Network',
+                'infra.feature1': 'Verified partner suppliers meeting strict standards',
+                'infra.feature2': 'Integrated multi-seller delivery system',
+                'infra.feature3': 'Flexible and stable ordering process',
+                'cocreation.title': 'Your Style Becomes Our Sourcing Standard',
+                'cocreation.description': 'LOOMPORT is not just an open marketplace. We grow with our partners and create the market together.',
+                'cocreation.quote': '"We ',
+                'cocreation.quoteHighlight': 'prioritize sourcing',
+                'cocreation.quoteEnd': ' the specific styles, categories, and Korean brands you suggest, building infrastructure tailored to you."',
+                'early.title': 'Be the First to Start',
+                'early.description': 'As a LOOMPORT founding partner, get ',
+                'early.descriptionHighlight': 'priority access',
+                'early.descriptionEnd': '.',
+                'early.placeholder': 'Enter your email',
+                'early.submit': 'Register as Early Partner →',
+                'early.successTitle': 'Thank you for registering',
+                'early.successMessage': 'We will contact you by email shortly.',
+                'early.formNote': 'After registration, detailed materials and benefits will be sent immediately.',
+                'early.benefitTitle': 'Early Partner Benefits',
+                'early.benefitText': 'LOOMPORT plans to offer benefits to reduce initial transaction costs for pre-registered Japan partners after official launch.',
+                'early.benefitNote': '※ Specific benefits will be determined during service development.',
+                'footer.tagline': 'Sourcing should be a standard, not a choice',
+                'footer.contact': 'For inquiries, contact our LINE official account',
+                'footer.addFriend': 'Add Friend >'
+            }
+        };
+
+        // Language switching
+        let currentLang = 'ja';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.body.className = `lang-${lang}`;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('loomport-lang', lang);
+        }
+
+        // Initialize language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('loomport-lang');
+        if (savedLang && translations[savedLang]) {
+            switchLanguage(savedLang);
+        }
+
+        // Form submission
         document.getElementById('partner-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1942,26 +1618,20 @@
             const successMessage = document.getElementById('success-message');
             const formNote = document.querySelector('.form-note');
             
-            // Google Forms URL (formResponse endpoint)
             const googleFormsUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdciwfbakjf4-ro9Ax_nFTU2InbroaGmVW6CcH7Mbrc7_8CaQ/formResponse';
             
-            // Create form data for Google Forms
             const formData = new FormData();
-            formData.append('entry.1793680931', email); // Email field entry ID
+            formData.append('entry.1793680931', email);
             
-            // Submit to Google Forms via fetch (no-cors mode)
             fetch(googleFormsUrl, {
                 method: 'POST',
                 mode: 'no-cors',
                 body: formData
             }).then(() => {
-                // Hide form and show success message
                 form.style.display = 'none';
                 if (formNote) formNote.style.display = 'none';
                 successMessage.classList.add('show');
             }).catch(() => {
-                // Even if fetch fails due to CORS, the submission usually goes through
-                // So we still show success message
                 form.style.display = 'none';
                 if (formNote) formNote.style.display = 'none';
                 successMessage.classList.add('show');
