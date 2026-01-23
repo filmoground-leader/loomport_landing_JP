@@ -2,7 +2,7 @@
 <html lang="ja" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LOOMPORT | Korean Vintage Sourcing Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,7 @@
 
         html {
             scroll-behavior: smooth;
+            touch-action: manipulation;
         }
 
         body {
@@ -41,6 +42,7 @@
             -webkit-font-smoothing: antialiased;
             word-break: keep-all;
             overflow-wrap: break-word;
+            overflow-x: hidden;
         }
 
         body.lang-ja {
@@ -580,6 +582,7 @@
         /* Co-creation */
         .cocreation-section {
             background: var(--bg-white);
+            overflow: hidden;
         }
 
         .cocreation-content {
@@ -619,6 +622,8 @@
 
         .quote-wrapper {
             text-align: center;
+            width: 100%;
+            overflow: hidden;
         }
 
         .quote-box {
@@ -631,7 +636,9 @@
             text-align: left;
             line-height: 1.8;
             border-radius: 0 8px 8px 0;
-            display: inline-block;
+            display: block;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .quote-box .highlight {
@@ -929,7 +936,7 @@
 
             .hero,
             section {
-                padding: 50px 16px;
+                padding: 50px 20px;
             }
 
             .hero {
@@ -983,9 +990,16 @@
                 font-size: 20px;
             }
 
-            /* Value Cards */
+            /* Value Cards - ensure both show */
+            .value-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
             .value-card {
                 padding: 20px;
+                width: 100%;
             }
 
             .value-card h3 {
@@ -1003,13 +1017,17 @@
                 height: 16px;
             }
 
-            /* Infrastructure Map - Full Width */
+            .cards-arrow {
+                align-self: center;
+            }
+
+            /* Infrastructure - full width map */
             .infra-section {
-                padding: 50px 12px;
+                padding: 50px 16px;
             }
 
             .infra-header {
-                padding: 0 8px;
+                padding: 0;
             }
 
             .infra-header h2 {
@@ -1027,10 +1045,19 @@
             }
 
             .map-container {
-                margin: 0 -8px;
+                margin: 0 -16px;
+                width: calc(100% + 32px);
             }
 
             /* Co-creation */
+            .cocreation-section {
+                padding: 50px 20px;
+            }
+
+            .cocreation-content {
+                max-width: 100%;
+            }
+
             .cocreation-content h2 {
                 font-size: 20px;
                 line-height: 1.45;
@@ -1040,9 +1067,22 @@
                 font-size: 12px;
             }
 
+            .quote-wrapper {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
             .quote-box {
                 font-size: 11px;
-                padding: 14px 18px;
+                padding: 14px 16px;
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                white-space: normal;
+                word-break: normal;
+                overflow-wrap: break-word;
+                box-sizing: border-box;
             }
 
             /* Early Access */
@@ -1111,7 +1151,7 @@
 
             /* Footer */
             footer {
-                padding: 36px 16px 28px;
+                padding: 36px 20px 28px;
             }
 
             .footer-tagline {
@@ -1144,6 +1184,11 @@
             .infra-header h2,
             .early-content h2 {
                 font-size: 18px;
+            }
+
+            .quote-box {
+                font-size: 10px;
+                padding: 12px 14px;
             }
         }
     </style>
