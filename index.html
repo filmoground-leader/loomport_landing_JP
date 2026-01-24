@@ -6,7 +6,7 @@
     <title>LOOMPORT | Korean Vintage Sourcing Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -51,6 +51,11 @@
 
         body.lang-en {
             word-break: normal;
+        }
+
+        body.lang-zh {
+            font-family: 'Noto Sans TC', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-break: strict;
         }
 
         /* Header */
@@ -516,6 +521,8 @@
         .japan-pulse-1 { animation-delay: 0s; }
         .japan-pulse-2 { animation-delay: 0.3s; }
         .japan-pulse-3 { animation-delay: 0.6s; }
+        .japan-pulse-4 { animation-delay: 0.2s; }
+        .japan-pulse-5 { animation-delay: 0.5s; }
 
         @keyframes japanPulse {
             0% { r: 9; opacity: 0.3; }
@@ -539,6 +546,8 @@
         .flow-line-1 { animation-duration: 4s; }
         .flow-line-2 { animation-duration: 3.5s; animation-delay: 0.5s; }
         .flow-line-3 { animation-duration: 3s; animation-delay: 1s; }
+        .flow-line-4 { animation-duration: 3.8s; animation-delay: 0.3s; }
+        .flow-line-5 { animation-duration: 3.2s; animation-delay: 0.8s; }
 
         @keyframes flowDash {
             0% { stroke-dashoffset: 0; }
@@ -639,6 +648,8 @@
             display: block;
             max-width: 100%;
             box-sizing: border-box;
+            white-space: nowrap;
+            letter-spacing: -0.3px;
         }
 
         .quote-box .highlight {
@@ -853,8 +864,25 @@
             gap: 16px;
             font-size: 12px;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 28px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
+        }
+
+        .footer-email {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-email a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .footer-email a:hover {
+            text-decoration: underline;
         }
 
         .footer-contact .line-icon {
@@ -1080,6 +1108,7 @@
                 width: 100%;
                 max-width: 100%;
                 white-space: normal;
+                letter-spacing: 0;
                 word-break: normal;
                 overflow-wrap: break-word;
                 box-sizing: border-box;
@@ -1164,6 +1193,12 @@
                 font-size: 11px;
             }
 
+            .footer-email {
+                flex-direction: column;
+                gap: 6px;
+                font-size: 11px;
+            }
+
             .footer-description {
                 font-size: 10px;
             }
@@ -1202,6 +1237,7 @@
                 <div class="lang-switch">
                     <button class="lang-btn active" data-lang="ja">JP</button>
                     <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh">繁體</button>
                 </div>
                 <nav>
                     <a href="#early" class="btn-primary" data-i18n="nav.cta">日本パートナー事前登録</a>
@@ -1248,7 +1284,7 @@
         </div>
         
         <div class="hero-content">
-            <span class="badge" data-i18n="hero.badge">2026年6月 正式ローンチ予定｜日本パートナー事前募集</span>
+            <span class="badge" data-i18n="hero.badge">2026年6月 ローンチ予定｜パートナー事前募集</span>
             <p class="hero-subtitle" data-i18n="hero.subtitle">韓国ヴィンテージを仕入れたい</p>
             <h1 data-i18n="hero.title">日本のリセラー・小規模セラー・バイヤーのための<br><span class="highlight" data-i18n="hero.titleHighlight">新しい仕入れインフラ</span></h1>
             <p class="hero-description" data-i18n="hero.description">韓国現地への訪問なし。オンラインで少量から仕入れ、日本基準で検品される仕組みを現在構築中です。</p>
@@ -1356,69 +1392,89 @@
                                 </filter>
                             </defs>
                             
-                            <!-- Brush strokes -->
-                            <path d="M150,200 C220,160 300,140 380,150 C480,165 560,145 640,135 C740,122 820,115 900,125 L900,180 C840,190 760,185 680,175 C600,162 520,170 440,185 C340,205 260,210 180,200Z" fill="url(#inkWash1)" filter="url(#softInk2)"/>
-                            <path d="M180,220 C250,200 350,185 450,195 C550,205 640,190 740,175 C820,163 900,160 950,170 L950,220 C870,235 790,240 710,230 C610,218 530,235 430,245 C330,255 250,250 180,220Z" fill="url(#inkWash2)" filter="url(#softInk)"/>
+                            <!-- Brush strokes - centered -->
+                            <path d="M100,180 C200,140 350,130 500,145 C650,160 750,140 900,150 L900,200 C750,210 650,200 500,185 C350,170 200,180 100,180Z" fill="url(#inkWash1)" filter="url(#softInk2)"/>
+                            <path d="M80,220 C200,200 380,190 500,200 C620,210 750,195 920,210 L920,260 C750,275 620,265 500,250 C380,235 200,250 80,230Z" fill="url(#inkWash2)" filter="url(#softInk)"/>
                             
-                            <!-- Supplier lines to Hub (280, 190) -->
-                            <path d="M160,80 Q210,130 268,178" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-1"/>
-                            <path d="M280,55 Q280,115 280,175" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-2"/>
-                            <path d="M400,75 Q345,125 292,178" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-3"/>
-                            <path d="M150,300 Q205,250 268,202" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-4"/>
-                            <path d="M280,330 Q280,265 280,205" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-5"/>
-                            <path d="M400,310 Q345,255 292,202" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-6"/>
+                            <!-- Korean Supplier lines to Hub (500, 200) -->
+                            <path d="M400,70 Q440,130 485,185" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-1"/>
+                            <path d="M500,50 Q500,115 500,180" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-2"/>
+                            <path d="M600,70 Q560,130 515,185" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-3"/>
+                            <path d="M400,330 Q440,270 485,215" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-4"/>
+                            <path d="M500,360 Q500,285 500,220" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-5"/>
+                            <path d="M600,330 Q560,270 515,215" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,6" fill="none" opacity="0.6" stroke-linecap="round" class="inflow-line inflow-line-6"/>
                             
-                            <!-- Supplier dots -->
-                            <circle cx="160" cy="80" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="160" cy="80" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
-                            <circle cx="280" cy="55" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="280" cy="55" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
-                            <circle cx="400" cy="75" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="400" cy="75" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
-                            <circle cx="150" cy="300" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="150" cy="300" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
-                            <circle cx="280" cy="330" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="280" cy="330" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
-                            <circle cx="400" cy="310" r="5" fill="#94a3b8" opacity="0.7"/>
-                            <circle cx="400" cy="310" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
+                            <!-- Korean Supplier dots -->
+                            <circle cx="400" cy="70" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="400" cy="70" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-1"/>
+                            <circle cx="500" cy="50" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="500" cy="50" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-2"/>
+                            <circle cx="600" cy="70" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="600" cy="70" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-3"/>
+                            <circle cx="400" cy="330" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="400" cy="330" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-4"/>
+                            <circle cx="500" cy="360" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="500" cy="360" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-5"/>
+                            <circle cx="600" cy="330" r="5" fill="#94a3b8" opacity="0.7"/>
+                            <circle cx="600" cy="330" r="5" fill="#94a3b8" opacity="0.3" class="supplier-pulse supplier-pulse-6"/>
                             
-                            <!-- Hub to Japan lines (start from 280, 190) -->
-                            <path d="M295,190 Q560,70 850,92" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.55" stroke-linecap="round" class="flow-line flow-line-1"/>
-                            <path d="M295,190 Q580,235 780,255" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-2"/>
-                            <path d="M295,190 Q440,320 560,365" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-3"/>
+                            <!-- Outflow lines: Hub to Japan (right) -->
+                            <path d="M520,195 Q700,100 880,95" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.55" stroke-linecap="round" class="flow-line flow-line-1"/>
+                            <path d="M520,200 Q720,230 850,255" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-2"/>
+                            <path d="M520,205 Q650,300 750,350" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-3"/>
                             
-                            <!-- ===== MAP NODES (inside SVG for fixed positioning) ===== -->
+                            <!-- Outflow lines: Hub to Taiwan/Sydney (left) -->
+                            <path d="M480,195 Q300,120 130,110" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-4"/>
+                            <path d="M480,210 Q280,300 120,330" stroke="#3b82f6" stroke-width="1.3" stroke-dasharray="4,10" fill="none" opacity="0.45" stroke-linecap="round" class="flow-line flow-line-5"/>
                             
-                            <!-- LOOMPORT [KOREA] Hub -->
+                            <!-- ===== MAP NODES ===== -->
+                            
+                            <!-- LOOMPORT [KOREA] Hub - Center -->
                             <g class="node-hub">
-                                <circle cx="280" cy="190" r="12" fill="#111827" class="hub-dot"/>
-                                <circle cx="280" cy="190" r="12" fill="#111827" opacity="0.3" class="hub-pulse"/>
-                                <circle cx="280" cy="190" r="20" fill="none" stroke="#111827" stroke-opacity="0.12" stroke-width="6"/>
-                                <text x="280" y="225" text-anchor="middle" font-size="11" font-weight="800" fill="#111827" font-family="Inter, sans-serif">LOOMPORT [KOREA]</text>
+                                <circle cx="500" cy="200" r="12" fill="#111827" class="hub-dot"/>
+                                <circle cx="500" cy="200" r="12" fill="#111827" opacity="0.3" class="hub-pulse"/>
+                                <circle cx="500" cy="200" r="20" fill="none" stroke="#111827" stroke-opacity="0.12" stroke-width="6"/>
+                                <text x="500" y="240" text-anchor="middle" font-size="11" font-weight="800" fill="#111827" font-family="Inter, sans-serif">LOOMPORT [KOREA]</text>
                             </g>
                             
-                            <!-- TOKYO -->
+                            <!-- TOKYO - Right Top -->
                             <g class="node-japan">
-                                <circle cx="850" cy="92" r="9" fill="#3b82f6" class="japan-dot"/>
-                                <circle cx="850" cy="92" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-1"/>
-                                <circle cx="850" cy="92" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
-                                <text x="850" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">TOKYO</text>
+                                <circle cx="880" cy="95" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="880" cy="95" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-1"/>
+                                <circle cx="880" cy="95" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="880" y="125" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">TOKYO</text>
                             </g>
                             
-                            <!-- OSAKA -->
+                            <!-- OSAKA - Right Middle -->
                             <g class="node-japan">
-                                <circle cx="780" cy="255" r="9" fill="#3b82f6" class="japan-dot"/>
-                                <circle cx="780" cy="255" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-2"/>
-                                <circle cx="780" cy="255" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
-                                <text x="780" y="285" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">OSAKA</text>
+                                <circle cx="850" cy="255" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="850" cy="255" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-2"/>
+                                <circle cx="850" cy="255" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="850" y="285" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">OSAKA</text>
                             </g>
                             
-                            <!-- FUKUOKA -->
+                            <!-- FUKUOKA - Right Bottom -->
                             <g class="node-japan">
-                                <circle cx="560" cy="365" r="9" fill="#3b82f6" class="japan-dot"/>
-                                <circle cx="560" cy="365" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-3"/>
-                                <circle cx="560" cy="365" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
-                                <text x="560" y="395" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">FUKUOKA</text>
+                                <circle cx="750" cy="350" r="9" fill="#3b82f6" class="japan-dot"/>
+                                <circle cx="750" cy="350" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-3"/>
+                                <circle cx="750" cy="350" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="750" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">FUKUOKA</text>
+                            </g>
+                            
+                            <!-- TAIWAN - Left Top -->
+                            <g class="node-other">
+                                <circle cx="130" cy="110" r="9" fill="#3b82f6" class="other-dot"/>
+                                <circle cx="130" cy="110" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-4"/>
+                                <circle cx="130" cy="110" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="130" y="140" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">TAIWAN</text>
+                            </g>
+                            
+                            <!-- SYDNEY - Left Bottom -->
+                            <g class="node-other">
+                                <circle cx="120" cy="330" r="9" fill="#3b82f6" class="other-dot"/>
+                                <circle cx="120" cy="330" r="9" fill="#3b82f6" opacity="0.3" class="japan-pulse japan-pulse-5"/>
+                                <circle cx="120" cy="330" r="15" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-width="4"/>
+                                <text x="120" y="360" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="Inter, sans-serif">SYDNEY</text>
                             </g>
                         </svg>
                     </div>
@@ -1494,6 +1550,16 @@
     <footer id="contact">
         <p class="footer-tagline" data-i18n="footer.tagline">ソーシングは選択ではなく、基準であるべきです</p>
         <div class="footer-contact">
+            <div class="footer-email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="18" height="18">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Contact E-mail : </span>
+                <a href="mailto:loomportkor@gmail.com">loomportkor@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-contact">
             <div class="line-icon">
                 <svg viewBox="0 0 24 24" fill="white">
                     <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
@@ -1512,7 +1578,7 @@
         const translations = {
             ja: {
                 'nav.cta': '日本パートナー事前登録',
-                'hero.badge': '2026年6月 正式ローンチ予定｜日本パートナー事前募集',
+                'hero.badge': '2026年6月 ローンチ予定｜パートナー事前募集',
                 'hero.subtitle': '韓国ヴィンテージを仕入れたい',
                 'hero.title': '日本のリセラー・小規模セラー・バイヤーのための<br><span class="highlight">新しい仕入れインフラ</span>',
                 'hero.description': '韓国現地への訪問なし。オンラインで少量から仕入れ、日本基準で検品される仕組みを現在構築中です。',
@@ -1561,10 +1627,10 @@
             },
             en: {
                 'nav.cta': 'Early Partner Registration',
-                'hero.badge': 'June 2026 Official Launch | Japan Partner Pre-Registration',
+                'hero.badge': 'Target launch: June 2026 | Partner Pre-Registration',
                 'hero.subtitle': 'Want to source Korean vintage?',
-                'hero.title': 'A New Sourcing Infrastructure<br><span class="highlight">for Japanese Resellers, Small Sellers & Buyers</span>',
-                'hero.description': 'No trips to Korea needed. Source small quantities online with Japanese-standard quality inspection. Currently under development.',
+                'hero.title': 'A New Sourcing Infrastructure<br><span class="highlight">for Second-hand Resellers, Small Sellers & Buyers</span>',
+                'hero.description': 'No trips to Korea needed. Source small quantities online with global standard quality inspection. Currently under development.',
                 'hero.cta': 'Early Partner Registration',
                 'hero.note': '※ Service is in preparation. Designed with input from early participants.',
                 'value.title': 'Problems Solved & Value Delivered',
@@ -1602,11 +1668,60 @@
                 'early.successMessage': 'We will contact you by email shortly.',
                 'early.formNote': 'After registration, detailed materials and benefits will be sent immediately.',
                 'early.benefitTitle': 'Early Partner Benefits',
-                'early.benefitText': 'LOOMPORT plans to offer benefits to reduce initial transaction costs for pre-registered Japan partners after official launch.',
+                'early.benefitText': 'LOOMPORT plans to offer benefits to reduce initial transaction costs for pre-registered partners after official launch.',
                 'early.benefitNote': '※ Specific benefits will be determined during service development.',
                 'footer.tagline': 'Sourcing should be a standard, not a choice',
                 'footer.contact': 'For inquiries, contact our LINE official account',
                 'footer.addFriend': 'Add Friend >'
+            },
+            zh: {
+                'nav.cta': '合作夥伴預先登記',
+                'hero.badge': '預計上線：2026年6月｜合作夥伴預先招募',
+                'hero.subtitle': '想要採購韓國中古服飾？',
+                'hero.title': '為二手服飾經銷商、小型賣家及買家打造的<br><span class="highlight">全新採購基礎設施</span>',
+                'hero.description': '無需親赴韓國。線上小量採購，享有全球標準品質檢驗。目前建置中。',
+                'hero.cta': '合作夥伴預先登記',
+                'hero.note': '※ 服務準備中，根據早期參與者的意見進行設計。',
+                'value.title': '解決的問題與提供的價值',
+                'value.oldWay': '傳統方式',
+                'value.oldTitle': '過去的困難',
+                'value.old1': '前往韓國出差採購的負擔',
+                'value.old2': '品質不確定性與風險',
+                'value.old3': '款式與品類選擇有限',
+                'value.old4': '最低訂購量與物流安排困難',
+                'value.newTitle': 'LOOMPORT 解決方案',
+                'value.new1Bold': '線上一鍵採購',
+                'value.new1': '節省時間與成本',
+                'value.new2Bold': '嚴格品質檢驗',
+                'value.new2': '交易更安心',
+                'value.new3Bold': '多樣化商品',
+                'value.new3': '助力業務拓展',
+                'value.new4Bold': '彈性訂購系統',
+                'value.new4': '小量起訂',
+                'infra.title': '跨境新世代供應網絡',
+                'infra.feature1': '通過嚴格標準的合作供應商',
+                'infra.feature2': '多賣家商品整合配送系統',
+                'infra.feature3': '靈活穩定的訂購流程',
+                'cocreation.title': '您尋找的風格，就是我們的採購標準',
+                'cocreation.description': 'LOOMPORT 不只是一個開放市場。我們與合作夥伴共同成長，一起創造市場。',
+                'cocreation.quote': '"我們',
+                'cocreation.quoteHighlight': '優先開發',
+                'cocreation.quoteEnd': '您建議的特定風格、品類和韓國品牌，為您打造專屬的供應基礎設施。"',
+                'early.title': '搶先一步，率先開始',
+                'early.description': '成為 LOOMPORT 創始合作夥伴，獲得',
+                'early.descriptionHighlight': '優先使用權',
+                'early.descriptionEnd': '。',
+                'early.placeholder': '請輸入電子郵件',
+                'early.submit': '早期合作夥伴登記 →',
+                'early.successTitle': '感謝您的登記',
+                'early.successMessage': '我們將盡快透過電子郵件與您聯繫。',
+                'early.formNote': '登記後，將立即發送詳細資料與優惠說明。',
+                'early.benefitTitle': '早期合作夥伴福利',
+                'early.benefitText': 'LOOMPORT 計劃在正式上線後，為預先登記的合作夥伴提供減輕首次交易成本的優惠。',
+                'early.benefitNote': '※ 具體優惠內容將隨服務設計確定。',
+                'footer.tagline': '採購應該是標準，而非選擇',
+                'footer.contact': '如有疑問，請聯繫我們的 LINE 官方帳號',
+                'footer.addFriend': '加入好友 >'
             }
         };
 
