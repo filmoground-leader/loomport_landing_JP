@@ -1293,8 +1293,9 @@
         @media (max-width: 768px) {
             .lang-ja .hero h1,
             .lang-zh .hero h1 {
-                font-size: 17px;
-                letter-spacing: -0.3px;
+                font-size: 16px;
+                letter-spacing: -0.5px;
+                word-break: break-all;
             }
 
             .lang-ja .badge,
@@ -1303,28 +1304,70 @@
                 letter-spacing: 0;
             }
 
+            .lang-ja .hero-subtitle,
+            .lang-zh .hero-subtitle {
+                font-size: 11px;
+            }
+
+            .lang-ja .hero-description,
+            .lang-zh .hero-description {
+                font-size: 10px;
+                word-break: break-all;
+                line-height: 1.8;
+            }
+
             .lang-ja .hero-cta,
             .lang-zh .hero-cta {
                 font-size: 11px;
-                letter-spacing: 0;
+                letter-spacing: -0.3px;
+                padding: 10px 16px;
             }
 
             .lang-ja .signup-form button,
             .lang-zh .signup-form button {
                 font-size: 11px;
-                letter-spacing: 0;
+                letter-spacing: -0.3px;
+            }
+
+            .lang-ja .section-title,
+            .lang-ja .cocreation-content h2,
+            .lang-ja .infra-header h2,
+            .lang-ja .early-content h2,
+            .lang-zh .section-title,
+            .lang-zh .cocreation-content h2,
+            .lang-zh .infra-header h2,
+            .lang-zh .early-content h2 {
+                font-size: 16px;
+                letter-spacing: -0.3px;
             }
         }
 
         @media (max-width: 480px) {
             .lang-ja .hero h1,
             .lang-zh .hero h1 {
-                font-size: 15px;
+                font-size: 14px;
+                letter-spacing: -0.5px;
             }
 
             .lang-ja .badge,
             .lang-zh .badge {
-                font-size: 6.5px;
+                font-size: 6px;
+            }
+
+            .lang-ja .hero-description,
+            .lang-zh .hero-description {
+                font-size: 9px;
+            }
+
+            .lang-ja .section-title,
+            .lang-ja .cocreation-content h2,
+            .lang-ja .infra-header h2,
+            .lang-ja .early-content h2,
+            .lang-zh .section-title,
+            .lang-zh .cocreation-content h2,
+            .lang-zh .infra-header h2,
+            .lang-zh .early-content h2 {
+                font-size: 14px;
             }
         }
     </style>
