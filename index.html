@@ -945,12 +945,12 @@
 
         @media (max-width: 768px) {
             .header-inner {
-                padding: 0 16px;
+                padding: 0 12px;
                 height: 56px;
             }
 
             .logo {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             nav {
@@ -958,128 +958,152 @@
             }
 
             .lang-btn {
-                padding: 5px 10px;
+                padding: 5px 8px;
                 font-size: 10px;
             }
 
             .hero,
             section {
-                padding: 50px 20px;
+                padding: 40px 16px;
             }
 
             .hero {
-                padding-top: 70px;
+                padding-top: 65px;
                 min-height: auto;
             }
 
-            /* Hero Mobile */
+            /* Hero Mobile - 텍스트 짤림 방지 */
             .badge {
-                font-size: 9px;
-                padding: 6px 12px;
-                margin-bottom: 18px;
+                font-size: 8px;
+                padding: 5px 10px;
+                margin-bottom: 14px;
+                white-space: normal;
+                line-height: 1.4;
+                max-width: 100%;
+                text-align: center;
             }
 
             .hero-subtitle {
-                font-size: 12px;
+                font-size: 11px;
                 margin-bottom: 8px;
             }
 
             .hero h1 {
-                font-size: 22px;
-                line-height: 1.45;
-                margin-bottom: 16px;
+                font-size: 18px;
+                line-height: 1.5;
+                margin-bottom: 14px;
+                word-break: keep-all;
+                overflow-wrap: break-word;
             }
 
             .hero-description {
-                font-size: 12px;
-                margin-bottom: 24px;
-                line-height: 1.75;
+                font-size: 11px;
+                margin-bottom: 20px;
+                line-height: 1.7;
+                word-break: keep-all;
             }
 
             .hero-cta {
-                padding: 14px 28px;
-                font-size: 13px;
+                padding: 12px 20px;
+                font-size: 12px;
+                white-space: normal;
+                max-width: 100%;
             }
 
             .hero-note {
-                font-size: 10px;
+                font-size: 9px;
+                line-height: 1.5;
             }
 
             /* Section titles */
             .section-label {
-                font-size: 9px;
-                letter-spacing: 2px;
+                font-size: 8px;
+                letter-spacing: 1.5px;
             }
 
             .section-title,
             .cocreation-content h2,
             .infra-header h2,
             .early-content h2 {
-                font-size: 20px;
+                font-size: 17px;
+                line-height: 1.5;
+                word-break: keep-all;
             }
 
-            /* Value Cards - ensure both show */
+            /* Value Cards */
             .value-cards {
                 display: flex;
                 flex-direction: column;
-                gap: 16px;
+                gap: 14px;
             }
 
             .value-card {
-                padding: 20px;
+                padding: 16px;
                 width: 100%;
             }
 
+            .card-label {
+                font-size: 8px;
+            }
+
             .value-card h3 {
-                font-size: 14px;
-                margin-bottom: 14px;
+                font-size: 13px;
+                margin-bottom: 12px;
             }
 
             .value-card li {
-                font-size: 12px;
-                margin-bottom: 10px;
+                font-size: 11px;
+                margin-bottom: 8px;
+                line-height: 1.5;
             }
 
             .bullet-icon {
-                width: 16px;
-                height: 16px;
+                width: 14px;
+                height: 14px;
             }
 
             .cards-arrow {
                 align-self: center;
             }
 
-            /* Infrastructure - full width map */
+            .cards-arrow svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* Infrastructure */
             .infra-section {
-                padding: 50px 16px;
+                padding: 40px 12px;
             }
 
             .infra-header {
-                padding: 0;
+                padding: 0 4px;
             }
 
             .infra-header h2 {
-                font-size: 20px;
+                font-size: 17px;
+                line-height: 1.5;
             }
 
             .infra-features li {
-                font-size: 11px;
+                font-size: 10px;
+                line-height: 1.5;
             }
 
             .feature-number {
-                width: 22px;
-                height: 22px;
-                font-size: 10px;
+                width: 20px;
+                height: 20px;
+                font-size: 9px;
             }
 
             .map-container {
-                margin: 0 -16px;
-                width: calc(100% + 32px);
+                margin: 0 -12px;
+                width: calc(100% + 24px);
             }
 
             /* Co-creation */
             .cocreation-section {
-                padding: 50px 20px;
+                padding: 40px 16px;
             }
 
             .cocreation-content {
@@ -1087,12 +1111,13 @@
             }
 
             .cocreation-content h2 {
-                font-size: 20px;
-                line-height: 1.45;
+                font-size: 17px;
+                line-height: 1.5;
             }
 
             .cocreation-content > p {
-                font-size: 12px;
+                font-size: 11px;
+                line-height: 1.7;
             }
 
             .quote-wrapper {
@@ -1102,71 +1127,85 @@
             }
 
             .quote-box {
-                font-size: 11px;
-                padding: 14px 16px;
+                font-size: 10px;
+                padding: 12px 14px;
                 display: block;
                 width: 100%;
                 max-width: 100%;
                 white-space: normal;
                 letter-spacing: 0;
-                word-break: normal;
+                word-break: keep-all;
                 overflow-wrap: break-word;
                 box-sizing: border-box;
+                line-height: 1.7;
             }
 
             /* Early Access */
+            .early-section {
+                padding: 40px 16px;
+            }
+
             .early-content h2 {
-                font-size: 20px;
+                font-size: 17px;
             }
 
             .early-content > p {
-                font-size: 12px;
+                font-size: 11px;
+                line-height: 1.6;
             }
 
             .signup-form {
                 flex-direction: column;
-                padding: 8px;
+                padding: 6px;
             }
 
             .signup-form .input-wrapper {
-                padding: 0 12px;
+                padding: 0 10px;
             }
 
             .signup-form input {
-                padding: 12px 0;
-                font-size: 14px;
+                padding: 10px 0;
+                font-size: 13px;
             }
 
             .signup-form button {
                 width: 100%;
-                padding: 14px;
+                padding: 12px;
                 justify-content: center;
+                font-size: 12px;
+                white-space: normal;
             }
 
             .form-note {
-                font-size: 10px;
+                font-size: 9px;
+                line-height: 1.5;
             }
 
             .voucher-card {
-                padding: 20px;
+                padding: 16px;
+            }
+
+            .voucher-badge {
+                font-size: 9px;
             }
 
             .benefit-text {
-                font-size: 12px;
+                font-size: 11px;
+                line-height: 1.7;
             }
 
             .benefit-note {
-                font-size: 10px;
+                font-size: 9px;
             }
 
             /* LINE Button */
             .line-btn {
-                right: 14px;
-                bottom: 14px;
+                right: 12px;
+                bottom: 12px;
                 top: auto;
                 transform: none;
-                width: 46px;
-                height: 46px;
+                width: 44px;
+                height: 44px;
             }
 
             .line-btn:hover {
@@ -1174,56 +1213,118 @@
             }
 
             .line-btn svg {
-                width: 24px;
-                height: 24px;
+                width: 22px;
+                height: 22px;
             }
 
             /* Footer */
             footer {
-                padding: 36px 20px 28px;
+                padding: 32px 16px 24px;
             }
 
             .footer-tagline {
-                font-size: 11px;
+                font-size: 10px;
+                line-height: 1.5;
             }
 
             .footer-contact {
                 flex-direction: column;
-                gap: 10px;
-                font-size: 11px;
+                gap: 8px;
+                font-size: 10px;
             }
 
             .footer-email {
                 flex-direction: column;
-                gap: 6px;
-                font-size: 11px;
+                gap: 4px;
+                font-size: 10px;
+            }
+
+            .footer-logo {
+                font-size: 14px;
             }
 
             .footer-description {
-                font-size: 10px;
+                font-size: 9px;
+                line-height: 1.5;
+            }
+
+            .footer-copyright {
+                font-size: 8px;
             }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 20px;
+                font-size: 16px;
             }
 
             .badge {
-                font-size: 8px;
-                padding: 5px 10px;
+                font-size: 7px;
+                padding: 4px 8px;
             }
 
             .section-title,
             .cocreation-content h2,
             .infra-header h2,
             .early-content h2 {
-                font-size: 18px;
+                font-size: 15px;
             }
 
             .quote-box {
+                font-size: 9px;
+                padding: 10px 12px;
+            }
+
+            .value-card li {
                 font-size: 10px;
-                padding: 12px 14px;
+            }
+
+            .hero-cta {
+                font-size: 11px;
+                padding: 10px 16px;
+            }
+
+            .signup-form button {
+                font-size: 11px;
+            }
+        }
+
+        /* 일본어/중국어 전용 모바일 조정 */
+        @media (max-width: 768px) {
+            .lang-ja .hero h1,
+            .lang-zh .hero h1 {
+                font-size: 17px;
+                letter-spacing: -0.3px;
+            }
+
+            .lang-ja .badge,
+            .lang-zh .badge {
+                font-size: 7px;
+                letter-spacing: 0;
+            }
+
+            .lang-ja .hero-cta,
+            .lang-zh .hero-cta {
+                font-size: 11px;
+                letter-spacing: 0;
+            }
+
+            .lang-ja .signup-form button,
+            .lang-zh .signup-form button {
+                font-size: 11px;
+                letter-spacing: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lang-ja .hero h1,
+            .lang-zh .hero h1 {
+                font-size: 15px;
+            }
+
+            .lang-ja .badge,
+            .lang-zh .badge {
+                font-size: 6.5px;
             }
         }
     </style>
